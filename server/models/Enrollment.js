@@ -2,21 +2,21 @@ import mongoose from "mongoose";
 
 const enrollmentSchema = new mongoose.Schema(
   {
-    // Ô số 1: Học viên nào đăng ký?
+    // Ô số 1: Học viên đăng ký
     studentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "Phải có thông tin học viên đăng ký"],
     },
 
-    // Ô số 2: Đăng ký lớp học nào?
+    // Ô số 2: Đăng ký lớp học
     classId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Class",
       required: [true, "Phải có thông tin lớp học"],
     },
 
-    // Ô số 3: Số tiền học phí phải đóng là bao nhiêu?
+    // Ô số 3: Số tiền học phí phải đóng
     tuitionFee: {
       type: Number,
       required: [true, "Phải có mức học phí"],
