@@ -1,0 +1,5382 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, "Segoe UI", sans-serif;
+  color: #20272b;
+  background: #f6f7f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f6f7f8;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page {
+  min-height: 100vh;
+  background: #f6f7f8;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e7e8eb;
+}
+
+.header-inner {
+  max-width: 1440px;
+  min-height: 70px;
+  margin: 0 auto;
+  padding: 10px clamp(12px, 1.8vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 1.2vw, 20px);
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  color: #193e31;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #078f65;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.1vw, 18px);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.main-nav a {
+  color: #252a2e;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 6px 4px;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: #078f65;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.header-actions button {
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.register-button {
+  background: #07996e;
+  color: #fff;
+}
+
+.register-button:hover {
+  background: #06815d;
+}
+
+.login-button {
+  border: 1px solid #d5d9dd !important;
+  background: #fff;
+  color: #34393d;
+}
+
+.login-button:hover {
+  border-color: #07996e !important;
+  color: #078f65;
+  background: #f4faf6;
+}
+
+.catalog-layout {
+  width: min(100% - 48px, 1460px);
+  margin: 26px auto 60px;
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.category-panel {
+  position: sticky;
+  top: 104px;
+  padding: 20px 16px 16px;
+  border: 1px solid #e3e6e9;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(25, 49, 39, 0.035);
+}
+
+.category-panel h2 {
+  margin: 2px 8px 16px;
+  color: #73777d;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.category-list {
+  display: grid;
+  gap: 7px;
+}
+
+.category-item {
+  width: 100%;
+  min-height: 58px;
+  padding: 8px 10px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: transparent;
+  color: #4d555a;
+  text-align: left;
+}
+
+.category-item:hover,
+.category-item.selected {
+  border-color: #07996e;
+  background: #effaf4;
+  color: #07865f;
+}
+
+.category-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #e8f5ef;
+  font-size: 19px;
+}
+
+.category-name {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-count {
+  min-width: 25px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #e7f4ec;
+  color: #087d5c;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.help-card {
+  margin-top: 22px;
+  padding: 14px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #ff9a26, #f26c21);
+  color: #fff;
+}
+
+.help-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 20px;
+}
+
+.help-card strong {
+  font-size: 13px;
+}
+
+.help-card p {
+  margin: 4px 0 0;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.course-content {
+  min-width: 0;
+}
+
+.course-heading {
+  margin: 4px 0 22px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #078f65;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.course-heading h1 {
+  margin: 0;
+  color: #1c2428;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.2;
+}
+
+.course-subtitle {
+  margin: 8px 0 0;
+  color: #737980;
+  font-size: 15px;
+}
+
+.result-count {
+  margin-bottom: 3px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eaf6ef;
+  color: #087d5c;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e2e5e8;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(25, 49, 39, 0.035);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 13px 28px rgba(25, 49, 39, 0.09);
+}
+
+.course-image {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dff5fa, #cdece8 55%, #eaf5ff);
+}
+
+.course-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.course-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 24px);
+  overflow: hidden;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #087d5c;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-card-body {
+  padding: 17px 17px 16px;
+}
+
+.tutor-name {
+  margin: 0 0 7px;
+  color: #078f65;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.course-card h2 {
+  min-height: 48px;
+  margin: 0 0 9px;
+  color: #1e2529;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.schedule {
+  margin: 0 0 12px;
+  color: #747a80;
+  font-size: 13px;
+}
+
+.course-stats {
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #747980;
+  font-size: 13px;
+}
+
+.course-stats b {
+  color: #ffc529;
+  font-size: 17px;
+}
+
+.course-card-footer {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 13px;
+}
+
+.course-card-footer strong {
+  color: #20282c;
+  font-size: 17px;
+}
+
+.course-card-footer small {
+  color: #858a8f;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.choose-button {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 12px;
+  background: #07996e;
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.15s ease;
+}
+
+.choose-button:hover {
+  background: #067c59;
+}
+
+.choose-button.chosen {
+  background: #e8f6ed;
+  color: #087d5c;
+  box-shadow: inset 0 0 0 1px #9cd8b8;
+}
+
+@media (max-width: 1100px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .catalog-layout {
+    grid-template-columns: 245px minmax(0, 1fr);
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner {
+    justify-content: space-between;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 15px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions button {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 5px 0;
+  }
+
+  .main-nav a {
+    font-size: 13px;
+  }
+
+  .catalog-layout {
+    width: min(100% - 28px, 540px);
+    margin-top: 18px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .category-panel {
+    position: static;
+    padding: 14px 12px;
+  }
+
+  .category-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-item {
+    min-height: 52px;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 6px;
+  }
+
+  .category-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .category-name {
+    font-size: 12px;
+  }
+
+  .help-card {
+    margin-top: 12px;
+  }
+
+  .course-heading {
+    align-items: start;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-image {
+    height: 210px;
+  }
+
+  .course-card h2 {
+    min-height: 0;
+  }
+}
+
+
+/* ========================================================
+   BỔ SUNG CSS CHO PHẦN NGƯỜI B (MÀN HÌNH 3 & MÀN HÌNH 4)
+   ======================================================== */
+
+.manage-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 11px;
+  background: #eaf6ef;
+  color: #078f65;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid #bce6d4;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.manage-quick-btn:hover {
+  background: #d8f1e4;
+  color: #067250;
+}
+
+/* Category Filter Selects */
+.filter-box {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555b62;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9dde1;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  color: #2e353b;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:focus {
+  border-color: #07996e;
+}
+
+.reset-filter-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 9px;
+  border: 1px dashed #c0c6cc;
+  border-radius: 10px;
+  background: #fafbfc;
+  color: #636b72;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.reset-filter-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+/* Search and Sort Toolbar */
+.search-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid #e3e6e9;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  color: #8b9299;
+}
+
+.search-input {
+  width: 100%;
+  padding: 11px 40px 11px 42px;
+  border: 1px solid #e1e4e7;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: #07996e;
+  box-shadow: 0 0 0 3px rgba(7, 153, 110, 0.12);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 12px;
+  border: none;
+  background: #e2e8f0;
+  color: #64748b;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+}
+
+.sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 1px solid #edf0f2;
+  padding-left: 14px;
+}
+
+.sort-icon {
+  color: #71777e;
+}
+
+.sort-select {
+  padding: 10px 12px;
+  border: 1px solid #e1e4e7;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333d45;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Card Enhancements */
+.grade-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tutor-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tutor-avatar-small {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.course-card-title-link {
+  color: #1e2529;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.course-card-title-link:hover {
+  color: #078f65;
+}
+
+.student-progress-wrapper {
+  margin: 10px 0 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f8faf9;
+  border: 1px solid #e9eee9;
+}
+
+.student-progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #555e64;
+  margin-bottom: 5px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.status-badge {
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status-badge.open {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.full {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.grade-pill {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.card-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.view-detail-btn {
+  padding: 10px;
+  border: 1px solid #07996e;
+  border-radius: 11px;
+  background: #fff;
+  color: #078f65;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+
+.view-detail-btn:hover {
+  background: #effaf4;
+}
+
+.choose-button.disabled {
+  background: #cbd5e1 !important;
+  color: #64748b !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Pagination Bar */
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding: 16px;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border: 1px solid #d9dfe4;
+  border-radius: 10px;
+  background: #fff;
+  color: #3b434a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: #07996e;
+  color: #078f65;
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 6px;
+}
+
+.number-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  justify-content: center;
+}
+
+.number-btn.active {
+  background: #078f65;
+  border-color: #078f65;
+  color: #fff;
+}
+
+.empty-state {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px dashed #d1d5db;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-state h3 {
+  margin: 14px 0 6px;
+  color: #1f2937;
+}
+
+.empty-state p {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ========================================================
+   MÀN HÌNH 4: CHI TIẾT LỚP HỌC (ClassDetailPage)
+   ======================================================== */
+
+.detail-layout {
+  width: min(100% - 48px, 1260px);
+  margin: 24px auto 60px;
+}
+
+.detail-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.back-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.back-link-btn:hover {
+  background: #f8fafc;
+  color: #078f65;
+}
+
+.breadcrumbs {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.breadcrumbs a {
+  color: #078f65;
+  text-decoration: none;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+  align-items: start;
+}
+
+.detail-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-header-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.badges-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.course-tag-lg {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eaf6ef;
+  color: #078f65;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.grade-badge-lg {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge-lg {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.status-badge-lg.open {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge-lg.full {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.detail-title {
+  margin: 0 0 14px;
+  font-size: clamp(22px, 2.5vw, 30px);
+  color: #1e293b;
+  line-height: 1.35;
+}
+
+.detail-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.detail-section {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.tutor-card-horizontal {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.tutor-avatar-lg {
+  width: 86px;
+  height: 86px;
+  border-radius: 18px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid #e6f4ed;
+}
+
+.tutor-info-lg h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.tutor-bio {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.tutor-contacts {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  color: #64748b;
+  flex-wrap: wrap;
+}
+
+.tutor-contacts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.detail-description-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #334155;
+}
+
+/* Detail Sidebar */
+.detail-sidebar {
+  position: sticky;
+  top: 104px;
+}
+
+.enroll-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.enroll-price-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+.price-label {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.price-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: #078f65;
+  margin: 4px 0 2px;
+}
+
+.price-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.enroll-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.spec-label {
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-value {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.spec-progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.spec-progress-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.enroll-submit-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #07996e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(7, 153, 110, 0.25);
+  transition: all 0.2s;
+}
+
+.enroll-submit-button:hover:not(:disabled) {
+  background: #06815d;
+  transform: translateY(-2px);
+}
+
+.enroll-submit-button.disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.sidebar-guarantee {
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f8fafc;
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* ========================================================
+   MÀN HÌNH 4: QUẢN LÝ LỚP HỌC (ClassManagementPage)
+   ======================================================== */
+
+.manage-page-layout {
+  width: min(100% - 48px, 1420px);
+  margin: 26px auto 60px;
+}
+
+.manage-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.manage-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-class-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #07996e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(7, 153, 110, 0.2);
+  transition: all 0.2s;
+}
+
+.create-class-btn:hover {
+  background: #067e5a;
+}
+
+.reset-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #fff;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.reset-demo-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.stats-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.stat-summary-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.stat-card-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stat-card-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.manage-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  background: #fff;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+}
+
+.manage-search-box {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.manage-search-box input {
+  width: 100%;
+  padding: 10px 14px 10px 40px;
+  border: 1px solid #d9dfe4;
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+.manage-search-box input:focus {
+  border-color: #07996e;
+}
+
+.manage-select {
+  padding: 10px 14px;
+  border: 1px solid #d9dfe4;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.manage-count-badge {
+  font-size: 13px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.manage-table-container {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow-x: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.manage-table th {
+  padding: 14px 16px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.manage-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.manage-table tbody tr:hover {
+  background: #fafcfb;
+}
+
+.table-class-title {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+  max-width: 320px;
+}
+
+.table-class-meta {
+  display: flex;
+  gap: 6px;
+}
+
+.table-subject-tag {
+  font-size: 11px;
+  padding: 2px 7px;
+  background: #eaf6ef;
+  color: #078f65;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.table-grade-tag {
+  font-size: 11px;
+  padding: 2px 7px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+}
+
+.table-tutor-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.table-tutor-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-schedule-cell {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.table-students-cell {
+  min-width: 110px;
+}
+
+.table-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.table-progress-fill {
+  height: 100%;
+  transition: width 0.2s;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.view-action {
+  color: #0284c7;
+}
+
+.view-action:hover {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+.edit-action {
+  color: #d97706;
+}
+
+.edit-action:hover {
+  background: #fef3c7;
+  border-color: #fde68a;
+}
+
+.delete-action {
+  color: #e11d48;
+}
+
+.delete-action:hover {
+  background: #ffe4e6;
+  border-color: #fecdd3;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-lg {
+  max-width: 680px;
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.close-btn {
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.modal-form {
+  padding: 24px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.span-2 {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #07996e;
+}
+
+.error-text {
+  font-size: 11px;
+  color: #e11d48;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cancel-btn {
+  padding: 10px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #07996e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.submit-btn:hover {
+  background: #067e5a;
+}
+
+.success-state {
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.toast-notification {
+  position: fixed;
+  top: 96px;
+  right: 24px;
+  background: #07996e;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(7, 153, 110, 0.3);
+  z-index: 999;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Footer Styling */
+.site-footer {
+  background: #111a16;
+  color: #cbd5e1;
+  margin-top: 80px;
+  border-top: 1px solid #23342d;
+}
+
+.footer-inner {
+  width: min(100% - 48px, 1420px);
+  margin: 0 auto;
+  padding: 48px 0;
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr;
+  gap: 36px;
+}
+
+.footer-col h3 {
+  color: #fff;
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.footer-col h4 {
+  color: #07996e;
+  margin: 0 0 14px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-col p {
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-col ul strong {
+  color: #e2e8f0;
+}
+
+.footer-ptit-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(7, 153, 110, 0.15);
+  border: 1px solid rgba(7, 153, 110, 0.3);
+  color: #34d399;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e2c25;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-sidebar {
+    position: static;
+  }
+  .stats-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .form-group.span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid-row {
+    grid-template-columns: 1fr;
+  }
+  .search-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sort-wrapper {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+  }
+  .tutor-card-horizontal {
+    flex-direction: column;
+    text-align: center;
+  }
+  .tutor-contacts {
+    justify-content: center;
+  }
+}
+
+
+/* ========================================================
+   CSS BỔ SUNG CHO HEADER VÀ AUTH MODAL (FIX LỖI NÚT ĐĂNG NHẬP)
+   ======================================================== */
+
+.brand-text {
+  line-height: 1.2;
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #193e31;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: #078f65;
+  font-weight: 600;
+}
+
+.auth-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* User profile on header when logged in */
+.user-profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 4px 5px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.user-nav-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-nav-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.user-nav-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-nav-role {
+  font-size: 10px;
+  color: #078f65;
+  font-weight: 600;
+}
+
+.logout-icon-btn {
+  padding: 6px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #64748b !important;
+  display: grid;
+  place-items: center;
+}
+
+.logout-icon-btn:hover {
+  background: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #b91c1c !important;
+}
+
+/* Auth Modal Styling */
+.auth-modal-box {
+  max-width: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.auth-modal-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #193e31;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fafbfc;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.auth-tab-btn.active {
+  color: #078f65;
+  background: #fff;
+  border-bottom-color: #078f65;
+}
+
+.auth-modal-body {
+  padding: 22px;
+}
+
+.role-selector-box {
+  margin-bottom: 18px;
+}
+
+.auth-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.role-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.role-pill {
+  padding: 8px 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.role-pill.active {
+  background: #eaf6ef;
+  border-color: #078f65;
+  color: #078f65;
+  font-weight: 700;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.auth-input-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-with-icon input:focus {
+  border-color: #07996e;
+}
+
+.auth-submit-btn {
+  margin-top: 6px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #07996e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.auth-submit-btn:hover {
+  background: #06815d;
+}
+
+.demo-accounts-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.demo-accounts-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.demo-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.demo-chip {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tutor-chip {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.tutor-chip:hover {
+  background: #d1fae5;
+}
+
+.admin-chip {
+  background: #fdf4ff;
+  color: #86198f;
+  border-color: #f5d0fe;
+}
+
+.admin-chip:hover {
+  background: #fae8ff;
+}
+
+.student-chip {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.student-chip:hover {
+  background: #dbeafe;
+}
+
+/* Ẩn các link phụ trên màn hình hẹp hơn 1260px để không bao giờ bị tràn */
+@media (max-width: 1260px) {
+  .nav-extra {
+    display: none !important;
+  }
+}
+
+
+/* ========================================================
+   GIAO DIỆN HIỆN ĐẠI THEO PHONG CÁCH PITCHPLAY DASHBOARD
+   ======================================================== */
+
+.pitch-app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f5f7;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Sidebar phong cách PitchPlay */
+.dashboard-sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-right: 1px solid #eaecf0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 40;
+}
+
+.sidebar-brand-wrapper {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.25);
+}
+
+.brand-title-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.brand-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.sidebar-nav-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  padding: 0 10px 8px;
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.sidebar-link:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.sidebar-link.active {
+  background: #fff7ed;
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.sidebar-link.active .link-icon {
+  color: #ea580c;
+}
+
+.accordion-toggle {
+  justify-content: space-between;
+}
+
+.accordion-submenu {
+  margin: 2px 0 6px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-left: 2px solid #fed7aa;
+  padding-left: 10px;
+}
+
+.submenu-link {
+  font-size: 12.5px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.submenu-link:hover,
+.submenu-link.active {
+  color: #ea580c;
+  background: #fff7ed;
+  font-weight: 600;
+}
+
+/* User Card ở đáy Sidebar */
+.sidebar-footer {
+  padding: 14px 12px;
+  border-top: 1px solid #f1f3f5;
+  position: relative;
+}
+
+.user-profile-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.user-profile-button:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.user-profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-meta {
+  flex: 1;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.user-profile-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-profile-email {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow-icon {
+  color: #94a3b8;
+  transition: transform 0.2s;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Popover chuyển đổi tài khoản theo đúng ảnh mẫu */
+.account-popover {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 12px;
+  right: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.15);
+  z-index: 100;
+  animation: popoverFade 0.2s ease;
+}
+
+@keyframes popoverFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popover-header {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.popover-account-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.popover-account-item:hover,
+.popover-account-item.active {
+  background: #f8fafc;
+}
+
+.popover-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.popover-account-info {
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.popover-account-info strong {
+  display: block;
+  color: #1e293b;
+  font-size: 12px;
+}
+
+.popover-account-info span {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.role-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.role-tag.tutor {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.role-tag.admin {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.role-tag.student {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.popover-actions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.popover-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.popover-btn.add-btn {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.popover-btn.logout-btn {
+  background: transparent;
+  color: #dc2626;
+}
+
+/* ========================================================
+   TOPBAR THEO ĐÚNG ẢNH MẪU PITCHPLAY
+   ======================================================== */
+
+.pitch-main-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #f4f5f7;
+}
+
+.dashboard-topbar {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #eaecf0;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-back-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.topbar-back-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.topbar-breadcrumb-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+}
+
+.breadcrumb-sub {
+  color: #64748b;
+}
+
+.breadcrumb-divider {
+  color: #cbd5e1;
+}
+
+.breadcrumb-current {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-quick-role-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 9px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.topbar-quick-role-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.topbar-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+  transition: all 0.15s;
+}
+
+.topbar-share-btn:hover {
+  background: #ea580c;
+}
+
+.topbar-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.topbar-icon-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* ========================================================
+   4 KHỐI DASHBOARD CHI TIẾT LỚP HỌC (PITCHPLAY DETAIL VIEW)
+   ======================================================== */
+
+.pitch-content-body {
+  padding: 0;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.pitch-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 20px;
+}
+
+.pitch-card {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* KHỐI 1: TỔNG QUAN LỚP HỌC */
+.course-overview-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.overview-tag-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.overview-grade-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.overview-title {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.overview-author-line {
+  font-size: 13.5px;
+  color: #64748b;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-link {
+  color: #f97316;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.overview-description {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.overview-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.pitch-pill {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.pill-tone {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.pill-accuracy {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pill-speed {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.overview-specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.spec-title {
+  color: #64748b;
+}
+
+.spec-val {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.spec-item.highlight-fee {
+  background: #fff7ed;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #ffedd5;
+  margin-top: 6px;
+}
+
+.fee-number {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ea580c;
+}
+
+/* KHỐI 2: VIDEO BÀI GIẢNG MẪU */
+.video-player-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.player-lesson-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.lesson-badge {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.lesson-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.download-material-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 9px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.download-material-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.video-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.video-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, transparent 60%);
+}
+
+.play-central-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.9);
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.play-central-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #ea580c;
+}
+
+.video-controls-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.control-icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+}
+
+.video-scrubber {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+}
+
+.scrubber-filled {
+  height: 100%;
+  background: #f97316;
+  border-radius: 999px;
+}
+
+.scrubber-knob {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.video-timestamp {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* KHỐI 3: GIÁO TRÌNH & LỘ TRÌNH (MATERIAL) */
+.material-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.material-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.material-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.material-status-tag {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.material-stages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stage-block {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px;
+  background: #ffffff;
+  transition: border-color 0.15s;
+}
+
+.stage-block.in-progress {
+  border-color: #fdba74;
+  background: #fffcf8;
+}
+
+.stage-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.stage-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stage-check-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #07996e;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.stage-progress-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #f97316;
+  color: #ea580c;
+  font-size: 10px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.stage-empty-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.stage-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.stage-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.stage-sublessons {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sublesson-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #334155;
+  transition: background 0.15s;
+}
+
+.sublesson-item.active {
+  background: #fff7ed;
+  font-weight: 600;
+  color: #ea580c;
+}
+
+.sublesson-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sublesson-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.sublesson-dot.current {
+  background: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.sublesson-duration {
+  font-size: 11.5px;
+  color: #94a3b8;
+}
+
+/* KHỐI 4: GHI CHÚ BÀI GIẢNG & TRỢ LÝ (TRANSCRIPT) */
+.transcript-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.transcript-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.transcript-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulseAnim 1.5s infinite;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.ai-assistant-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  margin-bottom: 16px;
+}
+
+.assistant-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f97316;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.assistant-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.assistant-info strong {
+  font-size: 13.5px;
+  color: #0f172a;
+}
+
+.assistant-info span {
+  font-size: 11px;
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.waveform-animation {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.waveform-animation span {
+  width: 3px;
+  background: #ea580c;
+  border-radius: 999px;
+  animation: wave 1s ease-in-out infinite alternate;
+}
+
+.waveform-animation span:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.waveform-animation span:nth-child(2) { height: 14px; animation-delay: 0.2s; }
+.waveform-animation span:nth-child(3) { height: 20px; animation-delay: 0.3s; }
+.waveform-animation span:nth-child(4) { height: 10px; animation-delay: 0.4s; }
+.waveform-animation span:nth-child(5) { height: 18px; animation-delay: 0.5s; }
+.waveform-animation span:nth-child(6) { height: 8px; animation-delay: 0.6s; }
+.waveform-animation span:nth-child(7) { height: 12px; animation-delay: 0.7s; }
+
+@keyframes wave {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
+.transcript-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.transcript-entry {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.transcript-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  font-family: monospace;
+  padding-top: 1px;
+}
+
+.transcript-entry p {
+  margin: 0;
+}
+
+.transcript-action-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.pitch-enroll-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
+  transition: all 0.2s;
+}
+
+.pitch-enroll-btn:hover:not(:disabled) {
+  background: #ea580c;
+  transform: translateY(-1px);
+}
+
+.pitch-enroll-btn.disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.enroll-guarantee-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #64748b;
+  margin-top: 10px;
+}
+
+.pitch-orange-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 11px;
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pitch-orange-btn:hover {
+  background: #ea580c;
+}
+
+/* Responsive adjustments cho giao diện PitchPlay */
+@media (max-width: 1180px) {
+  .pitch-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .dashboard-sidebar {
+    display: none; /* Mobile breakpoint */
+  }
+  .pitch-content-body {
+    padding: 16px;
+  }
+}
+
+
+/* Adapt old pages to the new PitchPlay shell */
+.pitch-content-body .catalog-layout,
+.pitch-content-body .manage-page-layout {
+  width: 100%;
+  margin: 0;
+  max-width: 100%;
+}
+
+.pitch-content-body .category-panel {
+  top: 80px;
+}
+
+
+/* ========================================================
+   THANH BỘ LỌC NGANG & MỞ RỘNG COURSE GRID (REFACTOR CỘT 2)
+   ======================================================== */
+
+.class-list-main-view {
+  width: 100%;
+}
+
+.course-content-fullwidth {
+  width: 100%;
+}
+
+/* Thanh Bộ lọc ngang */
+.horizontal-filter-bar {
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Hàng 1: Danh mục môn học dạng Pills */
+.horizontal-subjects-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.subject-pill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subject-pill-chip:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.subject-pill-chip.active {
+  background: #fff7ed;
+  color: #ea580c;
+  border-color: #fdba74;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.15);
+}
+
+.pill-chip-icon {
+  font-size: 14px;
+}
+
+.pill-chip-name {
+  font-size: 13px;
+}
+
+.pill-chip-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #64748b;
+}
+
+.subject-pill-chip.active .pill-chip-count {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+/* Hàng 2: Bộ lọc Dropdown Khối lớp & Học phí */
+.horizontal-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+.horizontal-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-controls-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.horizontal-select-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-inner-icon {
+  position: absolute;
+  left: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.inline-filter-select {
+  padding: 8px 14px 8px 32px;
+  border-radius: 10px;
+  border: 1px solid #d9dfe4;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.inline-filter-select:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+.horizontal-reset-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px dashed #fca5a5;
+  background: #fff5f5;
+  color: #dc2626;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.horizontal-reset-pill-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+/* Lưới Thẻ Khóa Học Được Mở Rộng Toàn Bộ Diện Tích */
+.course-grid-expanded {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.expanded-card {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expanded-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.expanded-card h2 {
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  min-height: 50px;
+  margin: 0 0 10px;
+}
+
+@media (max-width: 1400px) {
+  .course-grid-expanded {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-grid-expanded {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .horizontal-subjects-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+}
+
+
+/* ========================================================
+   GIAO DIỆN CLASS LIST FLUID (TRÀN VIỀN & LIST VIEW CHUẨN)
+   ======================================================== */
+
+.class-fluid-layout {
+  width: 100%;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.class-fluid-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.eyebrow-accent {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ea580c;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.class-fluid-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+.class-fluid-subtitle {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.status-pill-accent {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #fed7aa;
+  white-space: nowrap;
+}
+
+/* 2. Thanh Tags (Danh mục môn học) */
+.tags-bar-unified {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.tags-scroll-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+  padding: 2px 0;
+}
+
+.tags-scroll-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.tag-pill-unified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.tag-pill-unified:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.tag-pill-unified.active {
+  background: #f97316;
+  color: #ffffff;
+  border-color: #f97316;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+}
+
+.tag-name {
+  font-size: 13px;
+}
+
+.tag-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.tag-pill-unified.active .tag-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* 3. Thanh Tìm kiếm & Dropdowns (Đồng bộ chiều cao 40px) */
+.filters-bar-unified {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.search-input-box {
+  position: relative;
+  flex: 1 1 240px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.search-box-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.search-box-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 32px 0 36px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #f8fafc;
+  font-size: 13.5px;
+  color: #1e293b;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.search-box-input:focus {
+  border-color: #f97316;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+.search-box-clear {
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: #cbd5e1;
+  color: #475569;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.select-box-unified {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.select-box-icon {
+  position: absolute;
+  left: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.select-box-input {
+  height: 40px;
+  padding: 0 30px 0 32px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.select-box-input:focus {
+  border-color: #f97316;
+}
+
+.reset-button-unified {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 11px;
+  border: 1px dashed #fca5a5;
+  background: #fff5f5;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.reset-button-unified:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+/* 4. Danh sách Khóa học dạng LIST VIEW CHIỀU NGANG */
+.class-list-section {
+  width: 100%;
+}
+
+.course-list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.course-list-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #eaecf0;
+  border-radius: 18px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-list-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+/* Cột Trái (~28-30%): Ảnh */
+.card-thumb-column {
+  position: relative;
+  width: 280px;
+  min-width: 280px;
+  height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f1f5f9;
+}
+
+.card-thumb-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.course-list-card:hover .card-thumb-image {
+  transform: scale(1.04);
+}
+
+.card-thumb-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #ea580c;
+  font-size: 11.5px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-thumb-grade {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Cột Phải (~70-72%): Nội dung */
+.card-info-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-tutor-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.tutor-profile-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tutor-profile-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tutor-profile-name {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.tutor-profile-name strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.status-pill {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-pill.open {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.status-pill.full {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Tiêu đề khóa học: line-clamp-2 KHÔNG BAO GIỜ BỊ RỚT DÒNG THỨ 3 */
+.card-course-title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-course-title a {
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.card-course-title a:hover {
+  color: #ea580c;
+}
+
+.card-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.schedule-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-item strong {
+  color: #0f172a;
+}
+
+/* Hàng 2: Thanh tiến độ sĩ số */
+.card-progress-box {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 11px;
+  padding: 8px 12px;
+}
+
+.progress-text-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 5px;
+}
+
+.progress-text-row strong {
+  color: #0f172a;
+}
+
+.progress-status-open {
+  color: #059669;
+  font-weight: 700;
+}
+
+.progress-status-full {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.progress-track-bg {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progress-fill-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s;
+}
+
+/* Hàng 3: Học phí & Nút hành động */
+.card-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+  gap: 12px;
+}
+
+.fee-display-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.fee-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.fee-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ea580c;
+}
+
+.fee-value small {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.btn-solid {
+  height: 38px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+  transition: all 0.15s;
+}
+
+.btn-solid:hover:not(:disabled) {
+  background: #ea580c;
+}
+
+.btn-solid.disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 5. Phân trang */
+.pagination-wrapper-unified {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.page-nav-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.page-nav-button:hover:not(:disabled) {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.page-nav-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-numbers-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-num-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.page-num-button:hover {
+  background: #f8fafc;
+}
+
+.page-num-button.active {
+  background: #f97316;
+  border-color: #f97316;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+}
+
+.state-card-box {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  padding: 48px 24px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.state-card-box.empty {
+  border-style: dashed;
+}
+
+.state-card-box h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.state-card-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.btn-accent-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 11px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.25);
+}
+
+/* Responsive cho Mobile & Tablet */
+@media (max-width: 900px) {
+  .class-fluid-layout {
+    padding: 16px;
+  }
+  .course-list-card {
+    flex-direction: column;
+  }
+  .card-thumb-column {
+    width: 100%;
+    min-width: 100%;
+    height: 200px;
+  }
+}
+
+
+/* ========================================================
+   GIAO DIỆN CHUYÊN NGHIỆP THEO PHONG CÁCH COURSERA
+   ======================================================== */
+
+.coursera-app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+}
+
+.coursera-main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* 1. Header Coursera */
+.coursera-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.coursera-top-bar {
+  background: #0f172a;
+  height: 38px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.top-bar-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+
+.top-tab {
+  color: #94a3b8;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+
+.top-tab:hover {
+  color: #ffffff;
+}
+
+.top-tab.active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+  font-weight: 700;
+}
+
+.coursera-main-nav {
+  height: 68px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.main-nav-inner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 clamp(16px, 2.5vw, 40px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.coursera-brand {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-coursera-text {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0056D2;
+  letter-spacing: -0.7px;
+  text-transform: lowercase;
+}
+
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.btn-explore-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid #0056D2;
+  background: #0056D2;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-explore-dropdown:hover {
+  background: #00419e;
+}
+
+.explore-menu-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 240px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 100;
+}
+
+.explore-popup-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  padding: 4px 8px;
+}
+
+.explore-menu-popup a {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #334155;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.explore-menu-popup a:hover {
+  background: #f1f5f9;
+  color: #0056D2;
+}
+
+.btn-manage-classes-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.btn-manage-classes-nav:hover,
+.btn-manage-classes-nav.active {
+  border-color: #0056D2;
+  color: #0056D2;
+  background: #eff6ff;
+}
+
+.coursera-search-form {
+  position: relative;
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+}
+
+.coursera-search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 48px 0 20px;
+  border-radius: 999px;
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+  font-size: 13.5px;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.coursera-search-input:focus {
+  border-color: #0056D2;
+  box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.15);
+}
+
+.coursera-search-button {
+  position: absolute;
+  right: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0056D2;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.coursera-search-button:hover {
+  background: #00419e;
+}
+
+.coursera-auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.coursera-login-link {
+  background: transparent;
+  border: none;
+  color: #0056D2;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 8px;
+}
+
+.coursera-join-free-btn {
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: #0056D2;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 86, 210, 0.2);
+  transition: background 0.15s;
+}
+
+.coursera-join-free-btn:hover {
+  background: #00419e;
+}
+
+.coursera-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.user-chip-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-chip-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-chip-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.user-chip-role {
+  font-size: 11px;
+  color: #0056D2;
+  font-weight: 600;
+}
+
+.user-chip-logout {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #64748b;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.user-chip-logout:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+/* ========================================================
+   2. HERO BANNER CHUẨN COURSERA (Dark Background + 3 Cards)
+   ======================================================== */
+
+.coursera-hero-banner {
+  background: linear-gradient(135deg, #020c1b 0%, #001f3f 60%, #002b4d 100%);
+  color: #ffffff;
+  padding: 56px clamp(16px, 3vw, 48px) 64px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-banner-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(0, 86, 210, 0.35);
+  border: 1px solid rgba(0, 86, 210, 0.6);
+  color: #60a5fa;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.hero-heading {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  margin: 14px 0 12px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.hero-description {
+  font-size: 15.5px;
+  color: #cbd5e1;
+  max-width: 760px;
+  line-height: 1.65;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-three-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.hero-feature-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px 24px;
+  color: #0f172a;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.hero-feature-card p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* ========================================================
+   3. LOGO PARTNERS STRIP (COURSERA STYLE)
+   ======================================================== */
+
+.coursera-partners-strip {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 40px clamp(16px, 3vw, 48px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.partners-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  margin: 0 0 26px;
+  letter-spacing: 0.2px;
+}
+
+.partners-logos-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3.5vw, 48px);
+  flex-wrap: wrap;
+}
+
+.partner-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.partner-uni-logo {
+  height: 52px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.partner-uni-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.partner-logo-badge {
+  font-weight: 900;
+  font-size: 16px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+}
+
+.partner-logo-badge.ptit {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.partner-logo-badge.vnu {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.partner-logo-badge.hust {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.partner-logo-badge.neu {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.partner-logo-badge.hnue {
+  background: #fdf4ff;
+  color: #9333ea;
+}
+
+.partner-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #334155;
+}
+
+/* ========================================================
+   4. CATALOG & COURSE SERIES SECTION (COURSERA EXPLORE)
+   ======================================================== */
+
+.coursera-catalog-section {
+  width: 100%;
+  background: #f8fafc;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catalog-section-inner {
+  max-width: 1360px;
+  width: min(100%, 1360px);
+  margin: 0 auto;
+  background: #ffffff;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 48px clamp(16px, 2.5vw, 40px) 80px;
+  box-sizing: border-box;
+  min-height: 700px;
+}
+
+.catalog-header-text {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.catalog-header-text h2 {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.catalog-header-text p {
+  margin: 0;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* Toolbar Bộ lọc Coursera */
+.coursera-filter-toolbar {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.coursera-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
+}
+
+.coursera-tab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.coursera-tab-pill:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.coursera-tab-pill.active {
+  background: #0056D2;
+  color: #ffffff;
+  border-color: #0056D2;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 86, 210, 0.25);
+}
+
+.pill-badge-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.coursera-tab-pill.active .pill-badge-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.coursera-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.controls-dropdowns-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.control-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.control-select-icon {
+  position: absolute;
+  left: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.control-select {
+  height: 40px;
+  padding: 0 28px 0 32px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.control-select:focus {
+  border-color: #0056D2;
+}
+
+.coursera-reset-btn {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px dashed #fca5a5;
+  background: #fff5f5;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.coursera-reset-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.controls-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+}
+
+.controls-search-icon {
+  position: absolute;
+  left: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.controls-search-box input {
+  height: 40px;
+  padding: 0 14px 0 32px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+  width: 100%;
+}
+
+.controls-search-box input:focus {
+  border-color: #0056D2;
+}
+
+/* 5. COURSERA SERIES CARDS GRID (Thẻ khóa học dạng Series) */
+.coursera-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* ===== NEW COURSERA-STYLE CARD ===== */
+.coursera-series-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.coursera-series-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+}
+
+/* Thumbnail block (image + overlaid badges + title) */
+.card-thumbnail-block {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.coursera-series-card:hover .card-thumbnail-img {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay đè lên ảnh để text đọc được */
+.card-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.0) 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.card-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-series-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.card-grade-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #f1f5f9;
+}
+
+/* Tiêu đề môn học đè lên góc dưới ảnh */
+.card-subject-headline {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Thân Thẻ Trắng */
+.card-body-white {
+  padding: 18px 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tiêu đề khóa học (tên đầy đủ) */
+.card-course-heading {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-course-heading a {
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.card-course-heading a:hover {
+  color: #0056D2;
+}
+
+/* Mô tả ngắn (schedule + tutor) */
+.card-meta-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Footer info row: sĩ số + rating */
+.card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12.5px;
+  color: #64748b;
+  margin-top: auto;
+}
+
+.card-info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-info-chip.open {
+  color: #059669;
+  font-weight: 700;
+}
+
+.card-info-chip.full {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* CTA Link Button (giống "Analyze data with AI →") */
+.card-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #0056D2;
+  background: transparent;
+  color: #0056D2;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  align-self: flex-start;
+  text-decoration: none;
+}
+
+.card-cta-link:hover {
+  background: #0056D2;
+  color: #ffffff;
+}
+
+/* Giữ lại các class cũ cho tương thích */
+.card-tutor-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tutor-avatar-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+
+.tutor-full-name {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.tutor-full-name strong {
+  color: #0f172a;
+}
+
+.card-schedule-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.card-schedule-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-rating-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-rating-text strong {
+  color: #0f172a;
+}
+
+.card-students-progress {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.progress-info-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 5px;
+}
+
+.status-open {
+  color: #059669;
+  font-weight: 700;
+}
+
+.status-full {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.progress-bar-rail {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progress-bar-thumb {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s;
+}
+
+.card-footer-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+  gap: 10px;
+}
+
+.fee-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.fee-sub-label {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.fee-main-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0056D2;
+}
+
+.buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-coursera-secondary {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #0056D2;
+  color: #0056D2;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-coursera-secondary:hover {
+  background: #eff6ff;
+}
+
+.btn-coursera-primary {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #0056D2;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 86, 210, 0.25);
+  transition: background 0.15s;
+}
+
+.btn-coursera-primary:hover:not(:disabled) {
+  background: #00419e;
+}
+
+.btn-coursera-primary.disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Phân trang Coursera */
+.coursera-pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.coursera-page-btn {
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.coursera-page-btn.nav {
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coursera-page-btn.num {
+  width: 38px;
+}
+
+.coursera-page-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  color: #0056D2;
+  border-color: #0056D2;
+}
+
+.coursera-page-btn.num.active {
+  background: #0056D2;
+  color: #ffffff;
+  border-color: #0056D2;
+}
+
+.coursera-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.coursera-state-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.coursera-state-box.empty {
+  border-style: dashed;
+}
+
+.coursera-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  background: #0056D2;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive Coursera */
+@media (max-width: 1200px) {
+  .coursera-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-three-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coursera-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .top-bar-inner {
+    overflow-x: auto;
+  }
+  .coursera-search-form {
+    display: none; /* Hide top search on mobile */
+  }
+  .catalog-section-inner {
+    border-left: none;
+    border-right: none;
+    padding: 24px 16px 60px;
+  }
+}
+
+
+/* Khớp khung chi tiết lớp và quản lý lớp với Coursera Wrapper */
+.coursera-main-content .pitch-detail-container,
+.coursera-main-content .manage-page-layout {
+  max-width: 1380px;
+  width: min(100% - 48px, 1380px);
+  margin: 32px auto 60px;
+}

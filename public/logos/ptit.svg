@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="120" height="60">
+  <rect width="120" height="60" fill="white" rx="6"/>
+  <!-- Shield shape -->
+  <path d="M24 10 L36 10 L36 38 C36 44 30 48 30 48 C30 48 24 44 24 38 Z" fill="#c0392b"/>
+  <path d="M26.5 13 L33.5 13 L33.5 37 C33.5 41 30 44.5 30 44.5 C30 44.5 26.5 41 26.5 37 Z" fill="white" opacity="0.3"/>
+  <!-- Letter P inside shield -->
+  <text x="27.5" y="33" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="white">P</text>
+  <!-- PTIT text -->
+  <text x="43" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="#c0392b" letter-spacing="1">PTIT</text>
+  <line x1="43" y1="32" x2="100" y2="32" stroke="#c0392b" stroke-width="1"/>
+  <text x="43" y="44" font-family="Arial, sans-serif" font-size="7" fill="#555" letter-spacing="0.3">Posts &amp; Telecoms</text>
+</svg>

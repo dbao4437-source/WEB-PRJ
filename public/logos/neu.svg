@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 60" width="130" height="60">
+  <rect width="130" height="60" fill="white" rx="6"/>
+  <!-- Book / open book emblem -->
+  <path d="M14 38 L30 20 L46 38 Z" fill="#2980b9" opacity="0.15"/>
+  <path d="M18 38 C18 38 24 22 30 22 C36 22 42 38 42 38" fill="none" stroke="#2980b9" stroke-width="2.5"/>
+  <line x1="30" y1="22" x2="30" y2="40" stroke="#2980b9" stroke-width="2"/>
+  <ellipse cx="30" cy="40" rx="13" ry="4" fill="none" stroke="#2980b9" stroke-width="2"/>
+  <!-- N letter accent -->
+  <text x="27" y="36" font-family="Arial Black, sans-serif" font-size="10" font-weight="900" fill="#2980b9" opacity="0.6">N</text>
+  <!-- NEU text -->
+  <text x="58" y="26" font-family="Arial, sans-serif" font-size="15" font-weight="900" fill="#2980b9" letter-spacing="1.5">NEU</text>
+  <line x1="58" y1="30" x2="115" y2="30" stroke="#2980b9" stroke-width="1"/>
+  <text x="58" y="42" font-family="Arial, sans-serif" font-size="6.5" fill="#555">Natl. Economics Univ.</text>
+</svg>

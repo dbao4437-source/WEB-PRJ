@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 60" width="130" height="60">
+  <rect width="130" height="60" fill="white" rx="6"/>
+  <!-- Circle emblem -->
+  <circle cx="30" cy="30" r="20" fill="#1a5276"/>
+  <circle cx="30" cy="30" r="16" fill="white"/>
+  <circle cx="30" cy="30" r="12" fill="#1a5276"/>
+  <!-- Star in center -->
+  <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">★</text>
+  <!-- Outer ring dots -->
+  <circle cx="30" cy="11" r="2" fill="#f39c12"/>
+  <circle cx="30" cy="49" r="2" fill="#f39c12"/>
+  <circle cx="11" cy="30" r="2" fill="#f39c12"/>
+  <circle cx="49" cy="30" r="2" fill="#f39c12"/>
+  <!-- VNU text -->
+  <text x="58" y="26" font-family="Arial, sans-serif" font-size="15" font-weight="900" fill="#1a5276" letter-spacing="1">VNU</text>
+  <line x1="58" y1="30" x2="118" y2="30" stroke="#1a5276" stroke-width="1"/>
+  <text x="58" y="42" font-family="Arial, sans-serif" font-size="6.5" fill="#555">Vietnam National Univ.</text>
+</svg>
