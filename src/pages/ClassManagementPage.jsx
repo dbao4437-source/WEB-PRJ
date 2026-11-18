@@ -9,7 +9,6 @@ import {
   BookOpen,
   Users,
   CheckCircle2,
-  AlertTriangle,
   RotateCcw,
   Sparkles,
   Calendar,
@@ -35,6 +34,7 @@ export default function ClassManagementPage() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedSubject, setSelectedSubject] = useState('all')
+  const [stats, setStats] = useState({ totalClasses: 0, openClasses: 0, totalStudents: 0 })
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -44,12 +44,16 @@ export default function ClassManagementPage() {
   const [formErrors, setFormErrors] = useState({})
   const [toastMessage, setToastMessage] = useState(null)
 
-  // Load danh sách lớp
+  // Load danh sách lớp + thống kê tổng quan
   const fetchClasses = async () => {
     setLoading(true)
     try {
-      const res = await classService.getClasses({ limit: 100 })
+      const [res, overview] = await Promise.all([
+        classService.getClasses({ limit: 100 }),
+        classService.getOverviewStats(),
+      ])
       setClasses(res.classes)
+      setStats(overview)
     } catch (err) {
       console.error('Lỗi khi tải dữ liệu quản lý:', err)
     } finally {
@@ -130,7 +134,7 @@ export default function ClassManagementPage() {
       } else {
         await classService.updateClass(currentEditId, {
           ...formData,
-          'tutorId.fullName': formData.tutorName,
+          tutorName: formData.tutorName,
         })
         showToast('✓ Cập nhật thông tin lớp học thành công!')
       }
@@ -159,10 +163,13 @@ export default function ClassManagementPage() {
 
   // Khôi phục dữ liệu demo
   const handleResetDemoData = async () => {
-    if (window.confirm('Khôi phục lại danh sách lớp học mẫu ban đầu?')) {
+    if (!window.confirm('Khôi phục lại danh sách lớp học mẫu ban đầu?')) return
+    try {
       await classService.resetToDefault()
       showToast('✓ Đã khôi phục dữ liệu ban đầu!')
       fetchClasses()
+    } catch (err) {
+      alert('Không thể khôi phục dữ liệu mẫu: ' + err.message)
     }
   }
 
@@ -179,9 +186,8 @@ export default function ClassManagementPage() {
     return matchesSearch && matchesSubject
   })
 
-  // Thống kê nhanh
-  const totalStudents = classes.reduce((sum, c) => sum + (c.currentStudents || 0), 0)
-  const openClassesCount = classes.filter((c) => c.status === 'open').length
+  // Thống kê nhanh (lấy từ server để đúng cả khi danh sách > 100 lớp)
+  const { totalClasses, openClasses: openClassesCount, totalStudents } = stats
 
   return (
     <div className="manage-page-layout">
@@ -220,7 +226,7 @@ export default function ClassManagementPage() {
           </div>
           <div>
             <div className="stat-card-label">Tổng số lớp học</div>
-            <div className="stat-card-value">{classes.length}</div>
+            <div className="stat-card-value">{totalClasses}</div>
           </div>
         </div>
 

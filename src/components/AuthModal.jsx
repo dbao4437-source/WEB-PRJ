@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LogIn, UserPlus, Shield, GraduationCap, User, CheckCircle2, Lock, Mail, Phone } from 'lucide-react'
 
 export default function AuthModal({ isOpen, onClose, initialTab = 'login', onLoginSuccess }) {
@@ -9,6 +9,15 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login', onLog
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
+
+  // Modal luôn mounted trong Header nên phải đồng bộ tab mỗi lần được mở,
+  // nếu không bấm "Tham gia miễn phí" vẫn thấy tab Đăng nhập.
+  useEffect(() => {
+    if (isOpen) {
+      setTab(initialTab)
+      setSuccessMsg('')
+    }
+  }, [isOpen, initialTab])
 
   if (!isOpen) return null
 

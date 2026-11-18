@@ -1,35 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import {
   Search,
   ChevronDown,
   ShieldCheck,
-  BookOpen,
-  Layers,
-  LogOut,
-  User,
-  GraduationCap
+  LogOut
 } from 'lucide-react'
 import AuthModal from './AuthModal'
 
+// Đọc user đã đăng nhập từ localStorage (dùng cho lazy initializer)
+const readStoredUser = () => {
+  try {
+    const stored = localStorage.getItem('hsa_current_user')
+    return stored ? JSON.parse(stored) : null
+  } catch (e) {
+    console.error(e)
+    return null
+  }
+}
+
 export default function Header() {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(readStoredUser)
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const [authModalTab, setAuthModalTab] = useState('login')
   const [searchKeyword, setSearchKeyword] = useState('')
   const [exploreOpen, setExploreOpen] = useState(false)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('hsa_current_user')
-      if (stored) {
-        setCurrentUser(JSON.parse(stored))
-      }
-    } catch (e) {
-      console.error(e)
-    }
-  }, [])
 
   const handleLoginSuccess = (user) => {
     setCurrentUser(user)

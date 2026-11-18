@@ -1,18 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Users,
   Star,
   CheckCircle,
-  Share2,
-  Mail,
-  Phone,
   ShieldCheck,
-  BookOpen,
-  Award,
   AlertCircle,
   Download,
   Play,
@@ -20,16 +11,98 @@ import {
   Maximize2,
   Check,
   Sparkles,
-  Radio,
-  FileCheck2,
   ChevronDown,
   ChevronUp
 } from 'lucide-react'
 import { classService } from '../services/classService'
 
+// Nội dung "3 giai đoạn" giả lập theo từng nhóm môn, để trang chi tiết
+// không hiển thị nội dung Toán/Casio cho lớp IELTS hay Tiếng Trung.
+const CURRICULA = {
+  language: {
+    stages: [
+      {
+        name: 'Làm quen & chẩn đoán trình độ đầu vào',
+        lessons: ['Kiểm tra đầu vào 4 kỹ năng', 'Sửa lỗi phát âm và ngữ pháp nền tảng'],
+      },
+      {
+        name: 'Xây nền từ vựng và phản xạ giao tiếp',
+        lessons: ['Chủ đề từ vựng trọng tâm theo band điểm', 'Luyện phản xạ nói theo tình huống thực tế'],
+      },
+      {
+        name: 'Luyện đề và thi thử có chấm chữa',
+        lessons: ['Thi thử mô phỏng điều kiện thật', 'Chữa bài 1-1 và chốt lộ trình cá nhân'],
+      },
+    ],
+    pills: ['Phản xạ giao tiếp', 'Từ vựng chủ đề', 'Mục tiêu band điểm'],
+    lessonTitle: 'Kỹ thuật trả lời Speaking Part 2 và sửa lỗi phát âm thường gặp',
+    notes: [
+      ['Lưu ý phát âm', 'Ghi âm lại câu trả lời và đối chiếu với bản mẫu; chú ý trọng âm từ và ngữ điệu cuối câu.'],
+      ['Mẹo làm bài', 'Dành 1 phút chuẩn bị để phác ý chính trước khi nói, tránh lan man sang chủ đề khác.'],
+      ['Ôn tập', 'Mỗi ngày học 10 từ vựng mới kèm 1 câu ví dụ tự đặt, ôn lại vào cuối tuần.'],
+    ],
+  },
+  science: {
+    stages: [
+      {
+        name: 'Hệ thống hóa kiến thức nền tảng',
+        lessons: ['Các định luật và công thức trọng tâm', 'Phân loại dạng bài thường gặp'],
+      },
+      {
+        name: 'Chuyên đề vận dụng cao',
+        lessons: ['Phương pháp giải nhanh dạng bài khó', 'Bài tập phân hóa mức 8+ và 9+'],
+      },
+      {
+        name: 'Luyện đề thi thử chuẩn cấu trúc',
+        lessons: ['Thi thử bám sát ma trận đề', 'Chữa đề và chốt các lỗi sai thường gặp'],
+      },
+    ],
+    pills: ['Tư duy logic', 'Giải nhanh', 'Mục tiêu 9+'],
+    lessonTitle: 'Phương pháp giải nhanh cho dạng bài vận dụng cao',
+    notes: [
+      ['Lưu ý quan trọng', 'Luôn xác định điều kiện của bài toán trước khi áp dụng công thức.'],
+      ['Mẹo làm bài', 'Dành thời gian đầu cho câu dễ, đánh dấu câu khó để quay lại sau.'],
+      ['Ôn tập', 'Hệ thống lại công thức theo từng chuyên đề và làm lại các câu đã sai.'],
+    ],
+  },
+  general: {
+    stages: [
+      {
+        name: 'Đánh giá năng lực và xây lộ trình',
+        lessons: ['Kiểm tra đầu vào và xác định mục tiêu', 'Xây kế hoạch học tập cá nhân hóa'],
+      },
+      {
+        name: 'Học chuyên đề và luyện kỹ năng',
+        lessons: ['Chuyên đề trọng tâm theo lộ trình', 'Luyện kỹ năng giải quyết vấn đề'],
+      },
+      {
+        name: 'Tổng ôn và kiểm tra định kỳ',
+        lessons: ['Tổng ôn kiến thức toàn khóa', 'Kiểm tra định kỳ và điều chỉnh lộ trình'],
+      },
+    ],
+    pills: ['Lộ trình cá nhân', 'Phương pháp học', 'Cam kết tiến bộ'],
+    lessonTitle: 'Phương pháp học tập hiệu quả và quản lý thời gian',
+    notes: [
+      ['Lưu ý quan trọng', 'Ghi chú lại các lỗi sai và nguyên nhân để không lặp lại.'],
+      ['Mẹo học tập', 'Học theo khối thời gian 25 phút xen kẽ nghỉ ngắn để duy trì tập trung.'],
+      ['Ôn tập', 'Ôn lại bài cũ vào cuối mỗi buổi học để ghi nhớ lâu hơn.'],
+    ],
+  },
+}
+
+// Chọn bộ nội dung phù hợp với môn học
+const getCurriculum = (subject = '') => {
+  if (subject.includes('Anh') || subject.includes('Trung') || subject.includes('Nhật') || subject.includes('Hàn')) {
+    return CURRICULA.language
+  }
+  if (subject.includes('Toán') || subject.includes('Lý') || subject.includes('Hóa') || subject.includes('Vật')) {
+    return CURRICULA.science
+  }
+  return CURRICULA.general
+}
+
 export default function ClassDetailPage() {
   const { id } = useParams()
-  const navigate = useNavigate()
 
   const [course, setCourse] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -78,14 +151,22 @@ export default function ClassDetailPage() {
 
   const tutor = course.tutorId || {}
   const isFull = course.currentStudents >= course.maxStudents || course.status === 'full'
+  const curriculum = getCurriculum(course.subject)
 
   const handleEnrollSubmit = (e) => {
     e.preventDefault()
     setEnrollSuccess(true)
     if (course.currentStudents < course.maxStudents) {
-      classService.updateClass(course._id || course.id, {
-        currentStudents: course.currentStudents + 1,
-      }).then((updated) => setCourse(updated))
+      classService
+        .updateClass(course._id || course.id, {
+          currentStudents: course.currentStudents + 1,
+        })
+        .then((updated) => {
+          if (updated) setCourse(updated)
+        })
+        .catch((err) => {
+          console.error('Không cập nhật được sĩ số lớp:', err)
+        })
     }
   }
 
@@ -119,9 +200,9 @@ export default function ClassDetailPage() {
 
           {/* 3 Pills tiêu chuẩn như Tone, Accuracy, Speed */}
           <div className="overview-pills-row">
-            <span className="pitch-pill pill-tone">Tư duy logic</span>
-            <span className="pitch-pill pill-accuracy">Giải nhanh Casio</span>
-            <span className="pitch-pill pill-speed">Mục tiêu 9+</span>
+            <span className="pitch-pill pill-tone">{curriculum.pills[0]}</span>
+            <span className="pitch-pill pill-accuracy">{curriculum.pills[1]}</span>
+            <span className="pitch-pill pill-speed">{curriculum.pills[2]}</span>
           </div>
 
           {/* Bảng thông số thuộc tính lớp */}
@@ -158,7 +239,7 @@ export default function ClassDetailPage() {
           <div className="player-top-bar">
             <div className="player-lesson-info">
               <span className="lesson-badge">Giai đoạn 2 · Buổi 3</span>
-              <span className="lesson-title">Phương pháp giải nhanh Casio & Tích phân vận dụng cao</span>
+              <span className="lesson-title">{curriculum.lessonTitle}</span>
             </div>
             <button
               type="button"
@@ -234,7 +315,7 @@ export default function ClassDetailPage() {
                   </span>
                   <div>
                     <div className="stage-num">Giai đoạn 1</div>
-                    <div className="stage-name">Ôn tập toàn diện kiến thức nền tảng</div>
+                    <div className="stage-name">{curriculum.stages[0].name}</div>
                   </div>
                 </div>
                 {activeStage === 1 ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -245,14 +326,14 @@ export default function ClassDetailPage() {
                   <div className="sublesson-item done">
                     <div className="sublesson-name">
                       <CheckCircle size={15} color="#07996e" />
-                      <span>Hàm số, Cực trị và Đồ thị nâng cao</span>
+                      <span>{curriculum.stages[0].lessons[0]}</span>
                     </div>
                     <span className="sublesson-duration">45:10</span>
                   </div>
                   <div className="sublesson-item done">
                     <div className="sublesson-name">
                       <CheckCircle size={15} color="#07996e" />
-                      <span>Mũ & Logarit: Các dạng toán thường gặp</span>
+                      <span>{curriculum.stages[0].lessons[1]}</span>
                     </div>
                     <span className="sublesson-duration">50:20</span>
                   </div>
@@ -270,7 +351,7 @@ export default function ClassDetailPage() {
                   <span className="stage-progress-circle">25%</span>
                   <div>
                     <div className="stage-num">Giai đoạn 2</div>
-                    <div className="stage-name">Chuyên đề vận dụng cao 8+ và 9+</div>
+                    <div className="stage-name">{curriculum.stages[1].name}</div>
                   </div>
                 </div>
                 {activeStage === 2 ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -281,21 +362,21 @@ export default function ClassDetailPage() {
                   <div className="sublesson-item done">
                     <div className="sublesson-name">
                       <CheckCircle size={15} color="#07996e" />
-                      <span>Phương pháp đặt ẩn phụ & Chuẩn hóa số học</span>
+                      <span>{curriculum.stages[1].lessons[0]}</span>
                     </div>
                     <span className="sublesson-duration">12:23</span>
                   </div>
                   <div className="sublesson-item active">
                     <div className="sublesson-name">
                       <div className="sublesson-dot current"></div>
-                      <span>Kỹ thuật bấm máy tính Casio xử lý tích phân khó</span>
+                      <span>{curriculum.lessonTitle}</span>
                     </div>
                     <span className="sublesson-duration">12:25</span>
                   </div>
                   <div className="sublesson-item">
                     <div className="sublesson-name">
                       <div className="sublesson-dot"></div>
-                      <span>Hình học không gian Oxyz: Khoảng cách và Góc</span>
+                      <span>{curriculum.stages[1].lessons[1]}</span>
                     </div>
                     <span className="sublesson-duration">12:23</span>
                   </div>
@@ -313,7 +394,7 @@ export default function ClassDetailPage() {
                   <span className="stage-empty-circle">0%</span>
                   <div>
                     <div className="stage-num">Giai đoạn 3</div>
-                    <div className="stage-name">Luyện đề thi thử chuẩn cấu trúc HSA / THPTQG</div>
+                    <div className="stage-name">{curriculum.stages[2].name}</div>
                   </div>
                 </div>
                 {activeStage === 3 ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -345,26 +426,14 @@ export default function ClassDetailPage() {
           </div>
 
           <div className="transcript-body">
-            <div className="transcript-entry">
-              <span className="transcript-time">02:31</span>
-              <p>
-                <strong>Lưu ý quan trọng:</strong> Đối với bài toán cực trị hàm chứa dấu giá trị tuyệt đối, luôn xét điều kiện nghiệm của phương trình f'(x) = 0 trước khi lập bảng biến thiên.
-              </p>
-            </div>
-
-            <div className="transcript-entry">
-              <span className="transcript-time">02:45</span>
-              <p>
-                <strong>Công thức Casio:</strong> Sử dụng phím lệnh <code>[TABLE] (Mode 7 hoặc Menu 8)</code> với Bước nhảy (Step) = (End - Start) / 29 hoặc / 44 để quét toàn bộ nghiệm nguyên.
-              </p>
-            </div>
-
-            <div className="transcript-entry">
-              <span className="transcript-time">02:58</span>
-              <p>
-                <strong>Mẹo thi thử:</strong> Dành tối đa 35 phút đầu tiên cho 35 câu nhận biết - thông hiểu, 55 phút còn lại tập trung giải quyết 15 câu vận dụng cao.
-              </p>
-            </div>
+            {curriculum.notes.map(([label, text], idx) => (
+              <div className="transcript-entry" key={label}>
+                <span className="transcript-time">{['02:31', '02:45', '02:58'][idx]}</span>
+                <p>
+                  <strong>{label}:</strong> {text}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Nút hành động đăng ký giữ chỗ ngay */}

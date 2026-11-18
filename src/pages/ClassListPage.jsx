@@ -1,11 +1,9 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import {
   Search,
-  Filter,
   Users,
   Star,
-  Clock,
   RotateCcw,
   ChevronLeft,
   ChevronRight,
@@ -14,11 +12,6 @@ import {
   Tag,
   AlertCircle,
   Sparkles,
-  Award,
-  CheckCircle2,
-  GraduationCap,
-  ShieldCheck,
-  TrendingUp,
   Flame,
   ArrowRight
 } from 'lucide-react'
@@ -50,47 +43,46 @@ export default function ClassListPage() {
   const [loading, setLoading] = useState(false)
   const [classes, setClasses] = useState([])
   const [pagination, setPagination] = useState({ page: 1, limit: 6, totalItems: 0, totalPages: 1 })
-  const [allClassesRaw, setAllClassesRaw] = useState([])
+  const [subjectCounts, setSubjectCounts] = useState({ total: 0, bySubject: {} })
 
   // Cập nhật từ URL search param nếu có
   useEffect(() => {
     const query = searchParams.get('search')
     if (query !== null) {
       setKeyword(query)
+      setCurrentPage(1)
     }
   }, [searchParams])
 
-  // Danh mục môn học thống kê động
-  const subjects = useMemo(() => {
-    const list = [
-      'Tất cả',
-      'Toán THPT',
-      'Tiếng Trung',
-      'Vật Lý nâng cao',
-      'Hóa học',
-      'Tiếng Anh',
-    ]
-    return list.map((sub) => {
-      const count =
-        sub === 'Tất cả'
-          ? allClassesRaw.length
-          : allClassesRaw.filter((c) => c.subject === sub).length
-      return { name: sub, count }
-    })
-  }, [allClassesRaw])
+  // Danh mục môn học; số lượng lấy từ thống kê server (aggregate, không bị giới hạn limit)
+  const subjects = useMemo(
+    () =>
+      [
+        'Tất cả',
+        'Toán THPT',
+        'Tiếng Trung',
+        'Vật Lý nâng cao',
+        'Hóa học',
+        'Tiếng Anh',
+      ].map((name) => ({
+        name,
+        count: name === 'Tất cả' ? subjectCounts.total : subjectCounts.bySubject[name] || 0,
+      })),
+    [subjectCounts]
+  )
 
-  // Lấy dữ liệu tất cả để đếm số lượng
-  const fetchAllForCounts = async () => {
+  // Lấy số lượng theo môn từ server (một request, không phụ thuộc phân trang)
+  const fetchSubjectCounts = async () => {
     try {
-      const res = await classService.getClasses({ limit: 100 })
-      setAllClassesRaw(res.classes)
+      const counts = await classService.getSubjectCounts()
+      setSubjectCounts(counts)
     } catch (err) {
       console.error(err)
     }
   }
 
   // Tải danh sách lớp theo bộ lọc & phân trang
-  const loadClasses = async () => {
+  const loadClasses = useCallback(async () => {
     setLoading(true)
     try {
       const res = await classService.getClasses({
@@ -109,15 +101,15 @@ export default function ClassListPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [keyword, selectedSubject, selectedGrade, selectedPriceRange, sortBy, currentPage])
 
   useEffect(() => {
-    fetchAllForCounts()
+    fetchSubjectCounts()
   }, [])
 
   useEffect(() => {
     loadClasses()
-  }, [keyword, selectedSubject, selectedGrade, selectedPriceRange, sortBy, currentPage])
+  }, [loadClasses])
 
   const handleFilterChange = (setter, value) => {
     setter(value)
@@ -341,7 +333,6 @@ export default function ClassListPage() {
           ) : (
             <div className="coursera-cards-grid">
               {classes.map((c) => {
-                const tutor = c.tutorId || {}
                 const isFull = c.currentStudents >= c.maxStudents || c.status === 'full'
 
                 return (

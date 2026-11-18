@@ -23,7 +23,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/classes', classRoutes)
 
 // 404 Handler
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: `Đường dẫn không tồn tại: ${req.originalUrl}`,
@@ -31,6 +31,8 @@ app.use((req, res, next) => {
 })
 
 // Centralized Error Handling Middleware (Yêu cầu ảnh 4)
+// Bắt buộc đủ 4 tham số để Express nhận diện đây là error handler.
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.error('Server Error:', err)
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode
@@ -46,16 +48,16 @@ const startServer = async () => {
   try {
     await mongoose.connect(MONGO_URI)
     console.log('✓ Kết nối MongoDB thành công!')
-    app.listen(PORT, () => {
-      console.log(`✓ Server đang chạy tại http://localhost:${PORT}`)
-    })
   } catch (error) {
+    // Không có DB thì các route /api/classes sẽ treo/timeout; dừng hẳn để lỗi lộ ra ngay
     console.error('✗ Kết nối MongoDB thất bại:', error.message)
-    // Server vẫn chạy để phục vụ API test
-    app.listen(PORT, () => {
-      console.log(`! Server đang chạy ở chế độ offline tại http://localhost:${PORT}`)
-    })
+    console.error('  Kiểm tra MONGO_URI trong server/.env và đảm bảo MongoDB đang chạy.')
+    process.exit(1)
   }
+
+  app.listen(PORT, () => {
+    console.log(`✓ Server đang chạy tại http://localhost:${PORT}`)
+  })
 }
 
 startServer()
