@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, Phone, Lock, Save } from 'lucide-react';
+import { User, Save } from 'lucide-react';
 import './StudentDashboard.css';
 
 export default function StudentProfile() {

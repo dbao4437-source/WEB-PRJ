@@ -2,7 +2,9 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react
 import Login from './login';
 import Register from './register';
 import StudentDashboard from './StudentDashboard'; // Import giao diện học viên vừa tạo
-import './Login.css';
+import TutorDashboard from './TutorDashboard';
+import AdminDashboard from './AdminDashboard';
+import './login.css';
 
 function Home() {
   const navigate = useNavigate();
@@ -20,8 +22,14 @@ function Home() {
   if (token && role === 'student') {
     return <StudentDashboard />;
   }
+  if (token && role === 'tutor') {
+    return <TutorDashboard />;
+  }
+  if (token && role === 'admin') {
+    return <AdminDashboard />;
+  }
 
-  // Các trường hợp chưa đăng nhập, gia sư hoặc admin
+  // Các trường hợp chưa đăng nhập hoặc admin
   return (
     <div className="login-container">
       <div className="login-card" style={{ maxWidth: '900px', padding: '48px', display: 'block' }}>

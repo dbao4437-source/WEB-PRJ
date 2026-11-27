@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css'; // Import file CSS riêng cho trang Login
+import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -23,6 +23,9 @@ export default function Login() {
         setSuccess('Đăng ký thành công! Đang chuyển hướng về trang chủ...');
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.user.role); // Lưu token (nếu backend trả về token khi đăng ký)
+        localStorage.setItem('userId', data.user.id);
+        localStorage.setItem('userName', data.user.fullName);
+        localStorage.setItem('userEmail', data.user.email);
         setTimeout(() => {
           navigate('/'); // Chuyển hướng về trang chủ
         }, 1500);
@@ -83,6 +86,7 @@ export default function Login() {
             <Link to="/register" className="tab-inactive">Đăng ký</Link>
           </div>
 
+          {success.trim() && <div className="success-message">{success}</div>}
           {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleLogin} className="space-y-4">

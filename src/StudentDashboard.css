@@ -201,6 +201,313 @@
   font-weight: 500;
 }
 
+/* Overview landing */
+.overview-page {
+  display: grid;
+  gap: 54px;
+  padding-bottom: 30px;
+}
+
+.overview-hero {
+  min-height: 390px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  overflow: hidden;
+  position: relative;
+  border-radius: 28px;
+  color: #fff;
+  background: radial-gradient(circle at 86% 18%, rgba(245, 190, 74, 0.2), transparent 26%), linear-gradient(120deg, #17253a 0%, #263954 58%, #324b64 100%);
+  box-shadow: 0 22px 55px rgba(37, 53, 72, 0.17);
+}
+
+.overview-hero-copy {
+  z-index: 1;
+  padding: 46px 0 34px 48px;
+}
+
+.overview-eyebrow,
+.overview-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d29a23;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.overview-eyebrow { color: #f4cd70; }
+
+.overview-hero h1 {
+  margin: 20px 0 14px;
+  color: #fff;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.overview-hero h1 span { color: #f1c75e; }
+
+.overview-hero-copy > p {
+  max-width: 520px;
+  margin: 0;
+  color: #d2dae3;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.overview-hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 24px; }
+
+.overview-primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 11px;
+  background: #e5ad35;
+  color: #1b2a3b;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.overview-primary-button:hover { transform: translateY(-2px); background: #f1c75e; }
+
+.overview-text-link,
+.overview-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: #f4d88f;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.overview-hero-stats { display: flex; gap: 34px; margin-top: 33px; }
+.overview-hero-stats div { display: grid; gap: 4px; }
+.overview-hero-stats strong { color: #fff; font-size: 20px; }
+.overview-hero-stats span { color: #b9c3ce; font-size: 11px; }
+
+.overview-hero-art { min-height: 350px; position: relative; display: grid; place-items: center; }
+.overview-orbit { position: absolute; border: 1px solid rgba(255, 255, 255, .1); border-radius: 50%; transform: rotate(-28deg); }
+.overview-orbit-one { width: 310px; height: 210px; }
+.overview-orbit-two { width: 390px; height: 275px; transform: rotate(34deg); }
+.overview-book-card {
+  position: relative;
+  width: 205px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 28px;
+  color: #f1c75e;
+  background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.035));
+  box-shadow: 0 24px 50px rgba(0,0,0,.2), inset 0 1px rgba(255,255,255,.2);
+  transform: rotate(-7deg);
+}
+.overview-book-card span { color: #fff; font-size: 15px; font-weight: 700; }
+.overview-floating-cap,
+.overview-floating-star { position: absolute; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; color: #f7d77e; background: #344b62; box-shadow: 0 12px 25px rgba(0,0,0,.18); }
+.overview-floating-cap { top: 68px; right: 17%; width: 52px; height: 52px; transform: rotate(9deg); }
+.overview-floating-star { bottom: 76px; left: 14%; width: 42px; height: 42px; border-radius: 50%; }
+.overview-art-caption { position: absolute; bottom: 29px; right: 11%; color: #cbd5df; font-size: 11px; }
+.overview-art-caption span { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #7dd6a2; }
+
+.overview-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 21px; }
+.overview-section-heading h2 { margin: 7px 0 0; color: #2f2b25; font-size: 25px; letter-spacing: -0.025em; }
+.overview-partner-heading > p { max-width: 390px; margin: 0; color: #81776a; font-size: 13px; line-height: 1.65; }
+.overview-partner-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
+.overview-partner-card { min-height: 104px; display: flex; align-items: center; gap: 12px; padding: 15px; border: 1px solid #eee4cf; border-radius: 16px; background: rgba(255,255,255,.84); box-shadow: 0 7px 20px rgba(89, 67, 29, .04); }
+.overview-partner-logo { flex: 0 0 68px; width: 68px; height: 58px; object-fit: contain; }
+.overview-partner-mark { flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 15px; color: #fff; background: #263954; font-size: 10px; font-weight: 900; letter-spacing: -.04em; }
+.partner-ptit { background: #b9403d; }
+.partner-hust { color: #fff; background: #2f689b; }
+.partner-hnue { background: #327d68; }
+.overview-partner-card > div:nth-child(2) { display: grid; gap: 4px; min-width: 0; }
+.overview-partner-card strong { color: #39352e; font-size: 12px; }
+.overview-partner-card span { color: #847c70; font-size: 10px; line-height: 1.35; }
+.overview-partner-icon { flex: 0 0 auto; margin-left: auto; color: #c4a252; }
+
+.overview-view-all { padding: 8px 0; color: #9a6b0b; }
+.overview-faculty-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.overview-faculty-grid-single { grid-template-columns: minmax(300px, 380px); justify-content: center; }
+.overview-faculty-card { overflow: hidden; border: 1px solid #eee5d3; border-radius: 19px; background: #fff; box-shadow: 0 12px 32px rgba(70, 52, 23, .06); transition: transform .2s, box-shadow .2s; }
+.overview-faculty-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(70, 52, 23, .11); }
+.overview-faculty-photo { height: 210px; position: relative; display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg, #f4d986, #f8eee0 60%, #d9e5e5); }
+.faculty-photo-2 { background: linear-gradient(145deg, #d9e4df, #f5e7d2 65%, #efd5be); }
+.faculty-photo-3 { background: linear-gradient(145deg, #d7e0eb, #f5e9d2 65%, #ecd7c5); }
+.overview-faculty-photo > img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.faculty-photo-kevin { height: 360px; background: #f1eee6; }
+.faculty-photo-kevin > img { object-fit: contain; object-position: center; }
+.overview-faculty-placeholder { width: 118px; height: 148px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; border-radius: 60px 60px 22px 22px; color: #fff; background: linear-gradient(155deg, #c8973c, #735736); box-shadow: 0 15px 35px rgba(78,57,29,.2); }
+.overview-faculty-placeholder span { font-size: 23px; font-weight: 800; letter-spacing: .08em; }
+.faculty-photo-2 .overview-faculty-placeholder { background: linear-gradient(155deg, #718e87, #344e4d); }
+.faculty-photo-3 .overview-faculty-placeholder { background: linear-gradient(155deg, #617f9b, #354458); }
+.overview-faculty-subject { position: absolute; bottom: 12px; left: 13px; padding: 6px 10px; border: 1px solid rgba(255,255,255,.7); border-radius: 99px; color: #594622; background: rgba(255,255,255,.88); font-size: 10px; font-weight: 800; }
+.overview-faculty-info { padding: 19px; }
+.overview-faculty-title { color: #a57517; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.overview-faculty-info h3 { margin: 6px 0 8px; color: #302d27; font-size: 18px; }
+.overview-faculty-info > p { min-height: 58px; margin: 0; color: #81796e; font-size: 12px; line-height: 1.6; }
+.overview-achievements { display: flex; align-items: flex-start; gap: 8px; margin-top: 14px; padding-top: 13px; border-top: 1px solid #f0e9dc; color: #6b5b3a; font-size: 11px; line-height: 1.45; }
+.overview-achievements svg { flex: 0 0 auto; color: #c38a1b; }
+.overview-faculty-empty { grid-column: 1 / -1; padding: 30px; border: 1px dashed #d9c99e; border-radius: 16px; color: #81796e; text-align: center; background: rgba(255,255,255,.65); }
+
+.booking-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgba(35, 30, 20, .48);
+  backdrop-filter: blur(5px);
+  animation: booking-overlay-in .18s ease-out;
+}
+
+.booking-modal {
+  width: min(100%, 500px);
+  padding: 26px;
+  border: 1px solid #f1e5c8;
+  border-radius: 22px;
+  background: #fffefa;
+  box-shadow: 0 24px 70px rgba(46, 35, 14, .24);
+  animation: booking-modal-in .22s ease-out;
+}
+
+.booking-modal-header { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
+.booking-modal-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; color: #a76b00; background: #fff2c4; }
+.booking-modal-header h2 { margin: 0; color: #332b1e; font-size: 21px; line-height: 1.25; }
+.booking-modal-header p { margin: 4px 0 0; color: #8a8172; font-size: 13px; }
+.booking-modal-close { width: 34px; height: 34px; margin-left: auto; border: 0; border-radius: 10px; color: #82796b; background: transparent; font-size: 24px; cursor: pointer; }
+.booking-modal-close:hover { color: #3d3323; background: #f5f0e5; }
+.booking-tutor-summary { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; padding: 13px 15px; border: 1px solid #f0e5ce; border-radius: 14px; background: #fffaf0; }
+.booking-tutor-avatar { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: #9b6507; background: #ffedb1; }
+.booking-tutor-summary div { display: grid; gap: 3px; }
+.booking-tutor-summary small { color: #a18450; font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.booking-tutor-summary strong { color: #3d3323; font-size: 14px; }
+.booking-modal-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.student-courses-panel { padding: 30px; border: 1px solid #f1e5c8; border-radius: 18px; background: #fffefa; }
+.student-courses-panel h2 { margin: 0 0 18px; color: #352d21; }
+.student-enrollment-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.student-enrollment-card { padding: 18px; border: 1px solid #eee3cc; border-radius: 14px; background: #fff; }
+.student-enrollment-card strong { color: #3d3323; }
+.student-enrollment-card p { margin: 10px 0; color: #776d5b; font-size: 13px; }
+.enrollment-status { width: fit-content; padding: 5px 9px; border-radius: 999px; font-size: 11px; font-weight: 750; }
+.enrollment-status-active { color: #176b43; background: #dcfce7; }
+.enrollment-status-pending { color: #9a5b00; background: #fff0c2; }
+.enrollment-status-rejected { color: #9f3326; background: #ffebe5; }
+.student-profile-panel { padding: 30px; border: 1px solid #f1e5c8; border-radius: 20px; background: #fffefa; box-shadow: 0 8px 28px rgba(89, 67, 29, .05); }
+.student-profile-heading { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+.student-profile-heading h2 { margin: 0; color: #352d21; font-size: 22px; }
+.student-profile-heading p { margin: 7px 0 0; color: #826f50; font-size: 14px; }
+.student-profile-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.student-profile-form label, .student-profile-form-field { display: grid; gap: 9px; min-width: 0; color: #755923; font-size: 11px; font-weight: 800; letter-spacing: .045em; text-transform: uppercase; }
+.student-profile-form input, .student-profile-form select { width: 100%; height: 50px; box-sizing: border-box; padding: 0 15px; border: 1px solid #eadfca; border-radius: 14px; outline: 0; color: #352d21; background: linear-gradient(145deg, #fff 0%, #fffdf7 100%); box-shadow: 0 3px 10px rgba(89, 67, 29, .045), inset 0 1px 0 rgba(255, 255, 255, .9); font: inherit; font-size: 14px; letter-spacing: 0; text-transform: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease, background .2s ease; }
+.student-profile-form-field .booking-select-trigger { height: 50px; border-color: #eadfca; border-radius: 14px; background: linear-gradient(145deg, #fff 0%, #fffdf7 100%); box-shadow: 0 3px 10px rgba(89, 67, 29, .045), inset 0 1px 0 rgba(255, 255, 255, .9); }
+.student-profile-form-field .booking-select-trigger:hover, .student-profile-form-field .booking-select-trigger[aria-expanded="true"] { border-color: #e8c85d; background: #fff; }
+.student-profile-form-field .booking-select-trigger:focus-visible { border-color: #d99a00; box-shadow: 0 0 0 4px rgba(234, 179, 8, .15), 0 7px 18px rgba(89, 67, 29, .08); }
+.student-profile-form-field .booking-select-menu { z-index: 40; }
+.student-profile-form input:hover, .student-profile-form select:hover { border-color: #e8c85d; box-shadow: 0 5px 14px rgba(89, 67, 29, .08); }
+.student-profile-form input:focus, .student-profile-form select:focus { border-color: #d99a00; background: #fff; box-shadow: 0 0 0 4px rgba(234, 179, 8, .15), 0 7px 18px rgba(89, 67, 29, .08); transform: translateY(-1px); }
+.student-profile-form input::placeholder { color: #b1a895; }
+.student-profile-form input:disabled { color: #82796b; background: #f6f3eb; }
+.student-profile-form > button { grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 45px; }
+.student-profile-subjects { margin-top: 28px; padding-top: 22px; border-top: 1px solid #eee3cc; }
+.student-profile-subjects > header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.student-profile-subjects h3 { margin: 0; color: #352d21; font-size: 17px; }
+.student-profile-subjects p { margin: 6px 0 0; color: #826f50; font-size: 13px; }
+.student-profile-subjects > header > span { padding: 5px 10px; border-radius: 999px; color: #854d0e; background: #fef3c7; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.student-profile-subject-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.student-profile-subject { display: inline-flex; align-items: center; gap: 7px; padding: 10px 13px; border: 1px solid #f1d975; border-radius: 10px; color: #713f12; background: #fffdf4; font-size: 14px; font-weight: 600; }
+.student-profile-subject svg { color: #ca8a04; }
+.student-profile-enrollments { margin-top: 30px; }
+.student-profile-enrollments h3 { margin: 0 0 12px; color: #352d21; font-size: 17px; }
+.student-profile-enrollments article { display: grid; gap: 6px; margin-top: 10px; padding: 15px; border: 1px solid #eee3cc; border-radius: 13px; color: #6c5b3f; background: #fff; font-size: 13px; }
+.student-profile-enrollments strong { color: #382f21; font-size: 14px; }
+@media (max-width: 640px) { .student-profile-form { grid-template-columns: 1fr; } .student-profile-form button { grid-column: auto; } .student-profile-panel { padding: 22px 17px; } }
+.booking-field { display: grid; gap: 7px; min-width: 0; color: #5b4b32; font-size: 12px; font-weight: 700; }
+.booking-field-subject { grid-column: 1 / -1; }
+.booking-field input, .booking-field select { width: 100%; height: 45px; box-sizing: border-box; padding: 0 13px; border: 1px solid #ead9b5; border-radius: 11px; outline: 0; color: #382f21; background: #fff; font: inherit; font-size: 14px; transition: border-color .16s, box-shadow .16s; }
+.booking-field input::placeholder { color: #b2a995; font-weight: 400; }
+.booking-field input:focus, .booking-field select:focus { border-color: #d99a00; box-shadow: 0 0 0 3px rgba(234, 179, 8, .16); }
+.booking-field-choice { gap: 10px; padding: 14px; border: 1px solid #f0e2c6; border-radius: 15px; background: linear-gradient(145deg, #fffefa 0%, #fff8e7 100%); box-shadow: 0 5px 15px rgba(89, 67, 29, .045); }
+.booking-field-choice-label { display: flex; align-items: center; gap: 8px; color: #60491f; font-size: 12px; font-weight: 800; }
+.booking-field-choice-label svg { color: #ca8a04; }
+.booking-field-select-wrap { position: relative; display: block; }
+.booking-select-trigger { width: 100%; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; border: 1px solid #ead9b5; border-radius: 11px; outline: 0; color: #382f21; background: rgba(255, 255, 255, .92); box-shadow: inset 0 1px 2px rgba(89, 67, 29, .04); font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+.booking-select-trigger:hover, .booking-select-trigger[aria-expanded="true"] { border-color: #dcb94d; background: #fff; }
+.booking-select-trigger:focus-visible { border-color: #d99a00; box-shadow: 0 0 0 4px rgba(234, 179, 8, .16); }
+.booking-select-trigger > svg { color: #a8790a; transition: transform .18s ease; }
+.booking-select-trigger[aria-expanded="true"] > svg { transform: rotate(180deg); }
+.booking-select-menu { position: absolute; top: calc(100% + 7px); right: 0; left: 0; z-index: 30; max-height: 220px; overflow-y: auto; padding: 6px; border: 1px solid #f0dfb8; border-radius: 13px; background: #fffefa; box-shadow: 0 14px 30px rgba(68, 51, 20, .16); animation: booking-options-in .14s ease-out; }
+.booking-select-option { width: 100%; min-height: 39px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 11px; border: 0; border-radius: 9px; color: #5b4b32; background: transparent; font: inherit; font-size: 14px; text-align: left; cursor: pointer; transition: color .14s ease, background .14s ease; }
+.booking-select-option:hover, .booking-select-option:focus-visible { outline: 0; color: #713f12; background: #fff4d2; }
+.booking-select-option.selected { color: #784b00; background: #fef0bf; font-weight: 750; }
+.booking-select-option.selected svg { color: #c58a00; }
+.booking-modal-message { margin: 14px 0 0; color: #a33b2b; font-size: 13px; }
+.lesson-details-card { margin-top: 13px; padding: 15px; border: 1px solid #eee4d0; border-radius: 13px; background: #fff; }
+.lesson-details-card small { color: #9a7b42; font-size: 10px; font-weight: 800; letter-spacing: .09em; }
+.lesson-details-card h3 { margin: 9px 0 5px; color: #382f21; }
+.lesson-details-card p { margin: 8px 0 0; color: #625743; font-size: 13px; }
+.lesson-details-links { margin-top: 10px; color: #625743; font-size: 13px; }
+.lesson-details-links p { margin: 8px 0; }
+.booking-modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid #f0eadc; }
+.booking-cancel-button, .booking-confirm-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 17px; border-radius: 11px; font-weight: 750; cursor: pointer; }
+.booking-cancel-button { border: 1px solid #e6ddcb; color: #655b4b; background: #fff; }
+.booking-confirm-button { border: 0; color: #fff; background: #d99a00; box-shadow: 0 5px 12px rgba(217, 154, 0, .2); }
+.booking-confirm-button:hover { background: #bd8100; }
+@keyframes booking-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes booking-modal-in { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes booking-options-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 520px) {
+  .booking-modal-backdrop { padding: 14px; }
+  .booking-modal { padding: 21px 18px; border-radius: 18px; }
+  .booking-modal-fields { grid-template-columns: 1fr; }
+  .booking-field-subject { grid-column: auto; }
+  .booking-modal-footer > button { flex: 1; padding: 0 10px; }
+}
+
+@media (max-width: 900px) {
+  .overview-hero { grid-template-columns: 1fr .65fr; }
+  .overview-hero-copy { padding-left: 32px; }
+  .overview-partner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .overview-faculty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .overview-faculty-grid-single { grid-template-columns: minmax(300px, 380px); }
+}
+
+@media (max-width: 640px) {
+  .overview-page { gap: 38px; }
+  .overview-hero { grid-template-columns: 1fr; }
+  .overview-hero-copy { padding: 32px 24px 24px; }
+  .overview-hero h1 { font-size: 35px; }
+  .overview-hero-art { min-height: 240px; }
+  .overview-book-card { width: 155px; height: 155px; }
+  .overview-orbit-one { width: 230px; height: 150px; }
+  .overview-orbit-two { width: 300px; height: 190px; }
+  .overview-floating-cap { top: 22px; right: 16%; }
+  .overview-floating-star { bottom: 35px; left: 16%; }
+  .overview-art-caption { bottom: 15px; right: 8%; }
+  .overview-hero-stats { gap: 19px; }
+  .overview-section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .overview-section-heading h2 { font-size: 22px; }
+  .overview-partner-heading > p { max-width: none; }
+  .overview-partner-grid,
+  .overview-faculty-grid { grid-template-columns: 1fr; }
+  .overview-faculty-grid-single { grid-template-columns: minmax(0, 380px); }
+  .overview-faculty-photo { height: 230px; }
+  .faculty-photo-kevin { height: 320px; }
+}
+
 /* TOOLBAR & FILTERS */
 .student-toolbar {
   background: #FFFFFF;
@@ -592,5 +899,465 @@
 }
 .btn-primary-custom:hover {
   background: #CA8A04;
+}
+
+/* Student dashboard visual treatment shared with the tutor workspace */
+.student-dashboard.tutor-dashboard .student-main {
+  color: #17243b;
+}
+
+.student-dashboard.tutor-dashboard .student-banner {
+  padding: 21px 23px;
+  border: 0;
+  border-radius: 16px;
+  color: #fff;
+  background: linear-gradient(110deg, #31b4e8 0%, #2495ed 100%);
+  box-shadow: 0 9px 18px rgba(32, 145, 219, .15);
+}
+
+.student-dashboard.tutor-dashboard .student-banner h1 {
+  margin: 8px 0 4px;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: -.025em;
+}
+
+.student-dashboard.tutor-dashboard .student-banner p {
+  color: rgba(255, 255, 255, .86);
+  font-size: 12px;
+}
+
+.student-dashboard.tutor-dashboard .banner-tag {
+  color: #fff;
+  background: rgba(255, 255, 255, .18);
+  box-shadow: none;
+}
+
+.student-dashboard.tutor-dashboard .student-toolbar,
+.student-dashboard.tutor-dashboard .schedule-table-wrapper,
+.student-dashboard.tutor-dashboard .tutor-filter-bar,
+.student-dashboard.tutor-dashboard .student-courses-panel,
+.student-dashboard.tutor-dashboard .student-profile-panel {
+  border: 1px solid #e5ebf3;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(26, 48, 77, .035);
+}
+
+.student-dashboard.tutor-dashboard .student-toolbar {
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.student-dashboard.tutor-dashboard .toolbar-left,
+.student-dashboard.tutor-dashboard .week-switch,
+.student-dashboard.tutor-dashboard .tutor-filter-bar {
+  color: #61728a;
+}
+
+.student-dashboard.tutor-dashboard .week-switch {
+  background: #f3f7fb;
+}
+
+.student-dashboard.tutor-dashboard .week-btn {
+  color: #576980;
+}
+
+.student-dashboard.tutor-dashboard .week-btn.active {
+  color: #1687d1;
+  box-shadow: 0 2px 6px rgba(25, 45, 70, .08);
+}
+
+.student-dashboard.tutor-dashboard .attendance-btn,
+.student-dashboard.tutor-dashboard .btn-primary-custom {
+  background: #1d8ed4;
+  box-shadow: 0 4px 10px rgba(29, 142, 212, .17);
+}
+
+.student-dashboard.tutor-dashboard .attendance-btn:hover,
+.student-dashboard.tutor-dashboard .btn-primary-custom:hover {
+  background: #1479ba;
+}
+
+.student-dashboard.tutor-dashboard .schedule-table-wrapper {
+  overflow: auto;
+}
+
+.student-dashboard.tutor-dashboard .schedule-header-row {
+  border-color: #e5ebf3;
+  color: #53647b;
+  background: #f7f9fc;
+}
+
+.student-dashboard.tutor-dashboard .schedule-header-row span {
+  color: #8291a7;
+}
+
+.student-dashboard.tutor-dashboard .schedule-slot-row {
+  border-color: #e8edf4;
+  color: #b6c1ce;
+}
+
+.student-dashboard.tutor-dashboard .schedule-slot-row:hover {
+  background: #f8fbfe;
+}
+
+.student-dashboard.tutor-dashboard .slot-time {
+  border-color: #e8edf4;
+  color: #52647e;
+  background: #fbfcfe;
+}
+
+.student-dashboard.tutor-dashboard .lesson-card-mint,
+.student-dashboard.tutor-dashboard .lesson-card-blue {
+  border: 1px solid #99d9f6;
+  border-left: 3px solid #2495ed;
+  border-radius: 8px;
+  color: #155e87;
+  background: #e9f8ff;
+}
+
+.student-dashboard.tutor-dashboard .lesson-card-mint {
+  border-color: #a9e3ce;
+  border-left-color: #19a579;
+  color: #17684f;
+  background: #eafaf3;
+}
+
+.student-dashboard.tutor-dashboard .tutor-filter-bar {
+  gap: 10px;
+  padding: 13px 15px;
+}
+
+.student-dashboard.tutor-dashboard .search-input-wrapper input,
+.student-dashboard.tutor-dashboard .filter-select {
+  min-height: 38px;
+  border: 1px solid #dfe7f0;
+  border-radius: 9px;
+  color: #394a63;
+  background: #fff;
+  font-size: 12px;
+}
+
+.student-dashboard.tutor-dashboard .search-input-wrapper input:focus,
+.student-dashboard.tutor-dashboard .filter-select:focus {
+  border-color: #81c7ef;
+  box-shadow: 0 0 0 3px rgba(36, 149, 237, .08);
+}
+
+.student-dashboard.tutor-dashboard .search-icon-abs {
+  color: #8492a5;
+}
+
+.student-dashboard.tutor-dashboard .tutor-card-list {
+  gap: 12px;
+}
+
+.student-dashboard.tutor-dashboard .tutor-profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px;
+  border: 1px solid #e4eaf2;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(26, 48, 77, .035);
+}
+
+.student-dashboard.tutor-dashboard .tutor-profile-card .tutor-avatar-box {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 14px;
+  color: #667991;
+  background: #eaf0f6;
+  object-fit: cover;
+}
+
+.student-dashboard.tutor-dashboard .tutor-tags-row {
+  margin-bottom: 8px;
+}
+
+.student-dashboard.tutor-dashboard .tag-yellow,
+.student-dashboard.tutor-dashboard .tag-purple {
+  color: #50627a;
+  background: #f1f5f9;
+}
+
+.student-dashboard.tutor-dashboard .tutor-profile-card .tutor-course-title {
+  color: #26364e;
+}
+
+.student-dashboard.tutor-dashboard .tutor-profile-card .tutor-meta-info {
+  color: #61728a !important;
+}
+
+.student-dashboard.tutor-dashboard .tutor-profile-card .tutor-desc-box {
+  border: 1px solid #e8edf4;
+  color: #65758b;
+  background: #fbfcfe;
+}
+
+.student-dashboard.tutor-dashboard .tutor-card-right {
+  border-color: #e4eaf2;
+}
+
+.student-dashboard.tutor-dashboard .price-text {
+  color: #1688d5;
+}
+
+.student-dashboard.tutor-dashboard .price-sub {
+  color: #8997aa;
+}
+
+.student-dashboard.tutor-dashboard .student-courses-panel,
+.student-dashboard.tutor-dashboard .student-profile-panel {
+  padding: 20px;
+}
+
+.student-dashboard.tutor-dashboard .student-courses-panel h2,
+.student-dashboard.tutor-dashboard .student-profile-heading h2,
+.student-dashboard.tutor-dashboard .student-profile-subjects h3,
+.student-dashboard.tutor-dashboard .student-profile-enrollments h3 {
+  color: #1e2c43;
+}
+
+.student-dashboard.tutor-dashboard .student-enrollment-card,
+.student-dashboard.tutor-dashboard .student-profile-enrollments article {
+  border-color: #e4eaf2;
+  border-radius: 12px;
+  color: #65758b;
+  background: #fbfcfe;
+}
+
+.student-dashboard.tutor-dashboard .student-enrollment-card strong,
+.student-dashboard.tutor-dashboard .student-profile-enrollments strong {
+  color: #293a52;
+}
+
+.student-dashboard.tutor-dashboard .student-enrollment-card p {
+  color: #65758b;
+}
+
+.student-dashboard.tutor-dashboard .btn-outline-custom {
+  border-color: #dfe7f0;
+  color: #52627a;
+}
+
+.student-dashboard.tutor-dashboard .btn-outline-custom:hover {
+  border-color: #9dcff2;
+  color: #127dc2;
+  background: #f8fcff;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-heading {
+  align-items: center;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-heading > svg {
+  flex: 0 0 auto;
+  color: #1688d5 !important;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-heading p,
+.student-dashboard.tutor-dashboard .student-profile-subjects p {
+  color: #8290a5;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-form label,
+.student-dashboard.tutor-dashboard .student-profile-form-field {
+  color: #566780;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-form input,
+.student-dashboard.tutor-dashboard .student-profile-form select,
+.student-dashboard.tutor-dashboard .student-profile-form-field .booking-select-trigger {
+  border-color: #dfe7f0;
+  border-radius: 9px;
+  color: #394a63;
+  background: #fff;
+  box-shadow: none;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-form input:focus,
+.student-dashboard.tutor-dashboard .student-profile-form select:focus,
+.student-dashboard.tutor-dashboard .student-profile-form-field .booking-select-trigger:focus-visible {
+  border-color: #64b7e9;
+  box-shadow: 0 0 0 3px rgba(48, 166, 225, .1);
+  transform: none;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-subjects {
+  border-color: #e9eef4;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-subjects > header > span,
+.student-dashboard.tutor-dashboard .student-profile-subject {
+  border-color: #dcecf6;
+  color: #286d94;
+  background: #f0f9ff;
+}
+
+.student-dashboard.tutor-dashboard .student-profile-subject svg {
+  color: #258fce;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal {
+  border-color: #e4ebf3;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(20, 33, 50, .24);
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-icon {
+  color: #1688d5;
+  background: #e8f6ff;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-header h2,
+.student-dashboard.tutor-dashboard .lesson-details-card h3 {
+  color: #203047;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-header p,
+.student-dashboard.tutor-dashboard .lesson-details-card p,
+.student-dashboard.tutor-dashboard .lesson-details-links {
+  color: #718198;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-close {
+  color: #718198;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-close:hover {
+  color: #3e5069;
+  background: #f2f6fa;
+}
+
+.student-dashboard.tutor-dashboard .booking-tutor-summary,
+.student-dashboard.tutor-dashboard .booking-field-choice,
+.student-dashboard.tutor-dashboard .lesson-details-card {
+  border-color: #e4eaf2;
+  background: #fbfcfe;
+  box-shadow: none;
+}
+
+.student-dashboard.tutor-dashboard .booking-tutor-avatar {
+  color: #1688d5;
+  background: #e8f6ff;
+}
+
+.student-dashboard.tutor-dashboard .booking-field,
+.student-dashboard.tutor-dashboard .booking-field-choice-label,
+.student-dashboard.tutor-dashboard .booking-field-choice-label svg {
+  color: #566780;
+}
+
+.student-dashboard.tutor-dashboard .booking-field input,
+.student-dashboard.tutor-dashboard .booking-field select,
+.student-dashboard.tutor-dashboard .booking-select-trigger {
+  border-color: #dfe7f0;
+  border-radius: 9px;
+  color: #394a63;
+  background: #fff;
+}
+
+.student-dashboard.tutor-dashboard .booking-field input:focus,
+.student-dashboard.tutor-dashboard .booking-field select:focus,
+.student-dashboard.tutor-dashboard .booking-select-trigger:focus-visible {
+  border-color: #64b7e9;
+  box-shadow: 0 0 0 3px rgba(48, 166, 225, .1);
+}
+
+.student-dashboard.tutor-dashboard .booking-select-menu {
+  border-color: #e0e7f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.student-dashboard.tutor-dashboard .booking-select-option {
+  color: #52627a;
+}
+
+.student-dashboard.tutor-dashboard .booking-select-option:hover,
+.student-dashboard.tutor-dashboard .booking-select-option:focus-visible,
+.student-dashboard.tutor-dashboard .booking-select-option.selected {
+  color: #147ebc;
+  background: #f0f9ff;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-footer {
+  border-color: #e9eef4;
+}
+
+.student-dashboard.tutor-dashboard .booking-cancel-button {
+  border-color: #dfe7f0;
+  color: #52627a;
+}
+
+.student-dashboard.tutor-dashboard .booking-confirm-button {
+  background: #1d8ed4;
+  box-shadow: 0 4px 10px rgba(29, 142, 212, .17);
+}
+
+.student-dashboard.tutor-dashboard .booking-confirm-button:hover {
+  background: #1479ba;
+}
+
+.student-dashboard.tutor-dashboard .booking-modal-backdrop {
+  background: rgba(20, 33, 50, .48);
+}
+
+@media (max-width: 720px) {
+  .student-dashboard.tutor-dashboard .tutor-profile-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .student-dashboard.tutor-dashboard .tutor-card-right {
+    align-items: stretch;
+    border-top: 1px solid #e4eaf2;
+    border-left: 0;
+    padding: 13px 0 0;
+  }
+
+  .student-dashboard.tutor-dashboard .price-text,
+  .student-dashboard.tutor-dashboard .price-sub {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .student-dashboard.tutor-dashboard .student-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .student-dashboard.tutor-dashboard .toolbar-left {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .student-dashboard.tutor-dashboard .week-switch {
+    justify-content: space-between;
+  }
+
+  .student-dashboard.tutor-dashboard .tutor-filter-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .student-dashboard.tutor-dashboard .search-input-wrapper {
+    min-width: 0;
+  }
+
+  .student-dashboard.tutor-dashboard .student-profile-panel,
+  .student-dashboard.tutor-dashboard .student-courses-panel {
+    padding: 16px;
+  }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css'; // Chung file css với login
+import './login.css';
 
 export default function Register() {
   const [formData, setFormData] = useState({

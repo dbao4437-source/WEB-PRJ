@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { User, Shield, BookOpen, Award, Trash2, Lock, Unlock, Save } from 'lucide-react';
+import React, { useState } from 'react';
+import { User, Shield, Award, Trash2, Save } from 'lucide-react';
 import './StudentDashboard.css'; // Dùng chung file CSS thiết kế hệ thống
 
 export default function ProfileManagement() {
