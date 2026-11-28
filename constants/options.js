@@ -1,0 +1,7 @@
+﻿export const SUBJECT_OPTIONS=['Toán','Vật lý','Hóa học','Tin học','Sinh học','Ngữ văn','Tiếng Anh','Lịch sử','Địa lý','GDCD','Tiếng Nhật','Tiếng Hàn','Tiếng Trung','Khác']
+export const LEVEL_OPTIONS=['Cấp 1 (Tiểu học)','Cấp 2 (THCS)','Cấp 3 (THPT)','Luyện thi']
+export const AREA_OPTIONS=['Ba Đình','Hoàn Kiếm','Hai Bà Trưng','Đống Đa','Tây Hồ','Cầu Giấy','Thanh Xuân','Hoàng Mai','Long Biên','Nam Từ Liêm','Bắc Từ Liêm','Hà Đông','Sơn Tây','Ba Vì','Chương Mỹ','Đan Phượng','Đông Anh','Gia Lâm','Hoài Đức','Mê Linh','Mỹ Đức','Phú Xuyên','Phúc Thọ','Quốc Oai','Sóc Sơn','Thạch Thất','Thanh Oai','Thanh Trì','Thường Tín','Ứng Hòa']
+export const DOMESTIC_SCHOOLS=['ĐH Bách khoa Hà Nội (HUST)','ĐH Kinh tế Quốc dân (NEU)','ĐHQG Hà Nội (VNU)','ĐH Sư phạm Hà Nội','ĐH Ngoại thương (FTU)','Học viện Ngân hàng','Học viện Công nghệ Bưu chính Viễn thông (PTIT)','ĐH Thương mại','ĐH Xây dựng','ĐH Y Hà Nội','ĐH Luật Hà Nội','ĐH Khoa học Tự nhiên (HUS)','ĐH Ngoại ngữ (ULIS)','ĐH Giao thông Vận tải']
+export const INTERNATIONAL_SCHOOLS=['Oxford','Cambridge','Harvard','Stanford','MIT','NUS','NTU','University of Melbourne','University of Sydney','Seoul National University','University of Tokyo']
+export const CERTIFICATE_OPTIONS=['IELTS','TOEIC','TOEFL','JLPT','HSK','Chứng chỉ sư phạm','Giải HSG cấp tỉnh/quốc gia']
+export const LEVEL_LABELS={'Cấp 1 (Tiểu học)':'Cấp 1 (Tiểu học)','Cấp 2 (THCS)':'Cấp 2 (THCS)','Cấp 3 (THPT)':'Cấp 3 (THPT)','Tiểu học':'Cấp 1 (Tiểu học)','THCS':'Cấp 2 (THCS)','THPT':'Cấp 3 (THPT)'}

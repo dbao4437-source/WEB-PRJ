@@ -1,0 +1,7 @@
+﻿import { useState } from 'react'
+export default function MultiChipSelect({label,options=[],value=[],onChange,error,min=0,max=Infinity,allowCustom=false}){
+ const [text,setText]=useState('')
+ function toggle(option){if(value.includes(option))onChange(value.filter(item=>item!==option));else if(value.length<max)onChange([...value,option])}
+ function addCustom(event){if(event.key!=='Enter')return;event.preventDefault();const item=text.trim();if(item&&!value.includes(item)&&value.length<max)onChange([...value,item]);setText('')}
+ return <div className="shared-field"><span className="shared-label">{label}</span><div className="chip-options">{options.map(option=><button key={option} type="button" aria-pressed={value.includes(option)} className={`choice-chip ${value.includes(option)?'selected':''}`} onClick={()=>toggle(option)}>{option}</button>)}{allowCustom&&value.filter(item=>!options.includes(item)).map(item=><button type="button" key={item} className="choice-chip selected custom-chip" onClick={()=>onChange(value.filter(x=>x!==item))}>{item} <b>×</b></button>)}</div>{allowCustom&&<input className="shared-input custom-chip-input" value={text} onChange={e=>setText(e.target.value)} onKeyDown={addCustom} placeholder="Nhập chứng chỉ khác rồi Enter"/>}<small className="shared-hint">{max<Infinity?`Đã chọn ${value.length}/${max}. `:''}{min>0?`Chọn ít nhất ${min}.`:allowCustom?'Bấm Enter để thêm chứng chỉ mới.':''}</small>{error&&<small className="field-error">{error}</small>}</div>
+}

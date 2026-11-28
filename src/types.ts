@@ -1,0 +1,4 @@
+export type Slot = { dayOfWeek: number; timeSlot: string; isBooked: boolean }
+export type Tutor = { _id: string; fullName: string; email?: string; avatar?: string; bio?: string; rating?: number; hourlyRate: number; subjectsTaught: string[]; gradeLevels: string[]; location?: string; teachingModes: ('online'|'offline')[]; weeklyAvailability: Slot[]; availableSlots?: Slot[] }
+export type Booking = { _id: string; studentId: { _id: string; fullName: string; email?: string } | string; tutorId: { _id: string; fullName: string } | string; subject: string; grade: string; teachingMode: 'online'|'offline'; dayOfWeek: number; timeSlot: string; fee: number; note?: string; status: 'pending'|'approved'|'rejected'; createdAt: string }
+export type TutorFilters = { search: string; subject: string; grade: string; minFee: string; maxFee: string; location: string; teachingMode: string; dayOfWeek: string; timeSlot: string }
